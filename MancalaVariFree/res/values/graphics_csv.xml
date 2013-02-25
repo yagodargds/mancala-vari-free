@@ -67,7 +67,7 @@
         <!-- pILRTexTT -->				<item>0.9921875</item>
         <!-- pILRTexRS -->				<item>0.9921875</item>
         <!-- pILRTexBT -->				<item>0.0</item>
-        <!-- pIMTex -->					<item>@drawable/csv_air_p_i_m_tex</item>
+        <!-- pIMTex -->					<item>@drawable/csv_transp_tex</item>
         <!-- gSizeGBP -->				<item>0.03</item>
         <!-- gMinBorderCEP -->			<item>0.1</item>
         <!-- gTex -->					<item>@drawable/csv_air_tex_1</item>
@@ -137,80 +137,80 @@
     </array>
     
     <array name="csv_earth">
-        <!-- svTex -->					<item>@drawable/csv_air_back_tex</item>
+        <!-- svTex -->					<item>@drawable/csv_earth_tex_1</item>
         <!-- svTexLS -->				<item>0.0</item>
-        <!-- svTexTT -->				<item>0.75</item>
-        <!-- svTexRS -->				<item>0.99609375</item>
-        <!-- svTexBT -->				<item>0.0</item>
+        <!-- svTexTT -->				<item>0.947265625</item>
+        <!-- svTexRS -->				<item>0.9990234375</item>
+        <!-- svTexBT -->				<item>0.4423828125</item>
         <!-- gBMinBorderDispLRP -->		<item>0.01</item>
         <!-- gBMinBorderDispTP -->		<item>0.1</item>
         <!-- gBMinBorderDispBP -->		<item>0.1</item>
-        <!-- gBTex -->					<item>@drawable/csv_air_tex_1</item>
+        <!-- gBTex -->					<item>@drawable/csv_earth_tex_1</item>
         <!-- gBTexLS -->				<item>0.0</item>
-        <!-- gBTexTT -->				<item>0.556640625</item>
-        <!-- gBTexRS -->				<item>0.998046875</item>
+        <!-- gBTexTT -->				<item>0.4375</item>
+        <!-- gBTexRS -->				<item>0.9990234375</item>
         <!-- gBTexBT -->				<item>0.0</item>
         <!-- cIMinBorderDispLRP -->		<item>0.01</item>
-        <!-- cIMinBorderDispBP -->		<item>0.01</item>
+        <!-- cIMinBorderDispBP -->		<item>0.035</item>
         <!-- cIMinBorderTextETBP -->	<item>0.15</item>
         <!-- cITextColor -->			<item>#1bb0b2</item>
         <!-- cIErrorTextColor -->		<item>#ffff0000</item>
-        <!-- cILRTex -->				<item>@drawable/csv_air_tex_1</item>
-        <!-- cILRTexLS -->				<item>0.0</item>
-        <!-- cILRTexTT -->				<item>0.861328125</item>
-        <!-- cILRTexRS -->				<item>0.42578125</item>
-        <!-- cILRTexBT -->				<item>0.564453125</item>
-        <!-- cIMTex -->					<item>@drawable/csv_air_c_i_m_tex</item>
-        <!-- cMinBorderGBLRP -->		<item>0.018</item>
-        <!-- cMinBorderGBTBP -->		<item>0.1</item>
-        <!-- cMinBorderXP -->			<item>0.005</item>
-        <!-- cMinBorderYP -->			<item>0.005</item>
+        <!-- cILRTex -->				<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cILRTexLS -->				<item>0.8984375</item>
+        <!-- cILRTexTT -->				<item>0.49609375</item>
+        <!-- cILRTexRS -->				<item>0.9296875</item>
+        <!-- cILRTexBT -->				<item>0.0</item>
+        <!-- cIMTex -->					<item>@drawable/csv_earth_fire_c_i_m_tex</item>
+        <!-- cMinBorderGBLRP -->		<item>0.022</item>
+        <!-- cMinBorderGBTBP -->		<item>0.24</item>
+        <!-- cMinBorderXP -->			<item>0.01</item>
+        <!-- cMinBorderYP -->			<item>0.0</item>
         <!-- cMinBorderCYP -->			<item>0.005</item>
-        <!-- cWXMult -->				<item>1.335</item>
-        <!-- cWTex -->					<item>@drawable/csv_air_cells_tex</item>
+        <!-- cWXMult -->				<item>1.25</item>
+        <!-- cWTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
         <!-- cWTexLS -->				<item>0.0</item>
-        <!-- cWTexTT -->				<item>0.99609375</item>
-        <!-- cWTexRS -->				<item>0.34765625</item>
+        <!-- cWTexTT -->				<item>0.94921875</item>
+        <!-- cWTexRS -->				<item>0.44140625</item>
         <!-- cWTexBT -->				<item>0.0</item>
-        <!-- cTex -->					<item>@drawable/csv_air_cells_tex</item>
-        <!-- cTexLS -->					<item>0.359375</item>
-        <!-- cTexTT -->					<item>0.62109375</item>
-        <!-- cTexRS -->					<item>0.671875</item>
+        <!-- cTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cTexLS -->					<item>0.453125</item>
+        <!-- cTexTT -->					<item>0.43359375</item>
+        <!-- cTexRS -->					<item>0.8828125</item>
         <!-- cTexBT -->					<item>0.0</item>
-        <!-- cSTex -->					<item>@drawable/csv_air_cells_tex</item>
-        <!-- cSTexLS -->				<item>0.68359375</item>
-        <!-- cSTexTT -->				<item>0.62109375</item>
-        <!-- cSTexRS -->				<item>0.99609375</item>
-        <!-- cSTexBT -->				<item>0.0</item>
-        <!-- cPMinBorderGBEP -->		<item>0.018</item>
-        <!-- cPMinBorderCEP -->			<item>0.018</item>
+        <!-- cSTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cSTexLS -->				<item>0.453125</item>
+        <!-- cSTexTT -->				<item>0.8515625</item>
+        <!-- cSTexRS -->				<item>0.8828125</item>
+        <!-- cSTexBT -->				<item>0.4453125</item>
+        <!-- cPMinBorderGBEP -->		<item>0.075</item>
+        <!-- cPMinBorderCEP -->			<item>0.075</item>
         <!-- cPMinBorderTextETBP -->	<item>0.005</item>
         <!-- cPFirstTextColor -->		<item>#ff0000ff</item>
         <!-- cPSecondTextColor -->		<item>#ff000000</item>
-        <!-- cPLRTex -->				<item>@drawable/csv_air_tex_1</item>
-        <!-- cPLRTexLS -->				<item>0.943359375</item>
-        <!-- cPLRTexTT -->				<item>0.76953125</item>
-        <!-- cPLRTexRS -->				<item>0.998046875</item>
-        <!-- cPLRTexBT -->				<item>0.66015625</item>
-        <!-- cPMTex -->					<item>@drawable/csv_air_c_p_m_tex</item>
-        <!-- pIMinBorderGBEP -->		<item>0.02</item>
-        <!-- pIMinBorderCEP -->			<item>0.02</item>
+        <!-- cPLRTex -->				<item>@drawable/pause_loading</item>
+        <!-- cPLRTexLS -->				<item>0.984375</item>
+        <!-- cPLRTexTT -->				<item>0.9921875</item>
+        <!-- cPLRTexRS -->				<item>0.9921875</item>
+        <!-- cPLRTexBT -->				<item>0.0</item>
+        <!-- cPMTex -->					<item>@drawable/csv_transp_tex</item>
+        <!-- pIMinBorderGBEP -->		<item>0.08</item>
+        <!-- pIMinBorderCEP -->			<item>0.08</item>
         <!-- pIMinBorderTextETBP -->	<item>0.1</item>
         <!-- pIFirstTextColor -->		<item>#ff0000ff</item>
         <!-- pISecondTextColor -->		<item>#ff000000</item>
-        <!-- pILRTex -->				<item>@drawable/pause_loading</item>
-        <!-- pILRTexLS -->				<item>0.984375</item>
-        <!-- pILRTexTT -->				<item>0.9921875</item>
-        <!-- pILRTexRS -->				<item>0.9921875</item>
+        <!-- pILRTex -->				<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- pILRTexLS -->				<item>0.8984375</item>
+        <!-- pILRTexTT -->				<item>0.49609375</item>
+        <!-- pILRTexRS -->				<item>0.9296875</item>
         <!-- pILRTexBT -->				<item>0.0</item>
-        <!-- pIMTex -->					<item>@drawable/csv_air_p_i_m_tex</item>
+        <!-- pIMTex -->					<item>@drawable/csv_earth_fire_c_i_m_tex</item>
         <!-- gSizeGBP -->				<item>0.03</item>
         <!-- gMinBorderCEP -->			<item>0.1</item>
-        <!-- gTex -->					<item>@drawable/csv_air_tex_1</item>
-        <!-- gTexLS -->					<item>0.904296875</item>
-        <!-- gTexTT -->					<item>0.654296875</item>
-        <!-- gTexRS -->					<item>0.994140625</item>
-        <!-- gTexBT -->					<item>0.564453125</item>
+        <!-- gTex -->					<item>@drawable/csv_earth_tex_1</item>
+        <!-- gTexLS -->					<item>0.0</item>
+        <!-- gTexTT -->					<item>0.98046875</item>
+        <!-- gTexRS -->					<item>0.029296875</item>
+        <!-- gTexBT -->					<item>0.9521484375</item>
         
         <!-- lTex -->					<item>@drawable/logo</item>
         <!-- lTexLS -->					<item>0.0</item>
@@ -273,80 +273,80 @@
     </array>
     
     <array name="csv_fire">
-        <!-- svTex -->					<item>@drawable/csv_air_back_tex</item>
+        <!-- svTex -->					<item>@drawable/csv_fire_tex_1</item>
         <!-- svTexLS -->				<item>0.0</item>
-        <!-- svTexTT -->				<item>0.75</item>
-        <!-- svTexRS -->				<item>0.99609375</item>
-        <!-- svTexBT -->				<item>0.0</item>
+        <!-- svTexTT -->				<item>0.9658203125</item>
+        <!-- svTexRS -->				<item>0.9990234375</item>
+        <!-- svTexBT -->				<item>0.4169921875</item>
         <!-- gBMinBorderDispLRP -->		<item>0.01</item>
         <!-- gBMinBorderDispTP -->		<item>0.1</item>
         <!-- gBMinBorderDispBP -->		<item>0.1</item>
-        <!-- gBTex -->					<item>@drawable/csv_air_tex_1</item>
+        <!-- gBTex -->					<item>@drawable/csv_fire_tex_1</item>
         <!-- gBTexLS -->				<item>0.0</item>
-        <!-- gBTexTT -->				<item>0.556640625</item>
-        <!-- gBTexRS -->				<item>0.998046875</item>
+        <!-- gBTexTT -->				<item>0.412109375</item>
+        <!-- gBTexRS -->				<item>0.9990234375</item>
         <!-- gBTexBT -->				<item>0.0</item>
         <!-- cIMinBorderDispLRP -->		<item>0.01</item>
-        <!-- cIMinBorderDispBP -->		<item>0.01</item>
+        <!-- cIMinBorderDispBP -->		<item>0.035</item>
         <!-- cIMinBorderTextETBP -->	<item>0.15</item>
         <!-- cITextColor -->			<item>#1bb0b2</item>
         <!-- cIErrorTextColor -->		<item>#ffff0000</item>
-        <!-- cILRTex -->				<item>@drawable/csv_air_tex_1</item>
-        <!-- cILRTexLS -->				<item>0.0</item>
-        <!-- cILRTexTT -->				<item>0.861328125</item>
-        <!-- cILRTexRS -->				<item>0.42578125</item>
-        <!-- cILRTexBT -->				<item>0.564453125</item>
-        <!-- cIMTex -->					<item>@drawable/csv_air_c_i_m_tex</item>
-        <!-- cMinBorderGBLRP -->		<item>0.018</item>
-        <!-- cMinBorderGBTBP -->		<item>0.1</item>
-        <!-- cMinBorderXP -->			<item>0.005</item>
-        <!-- cMinBorderYP -->			<item>0.005</item>
+        <!-- cILRTex -->				<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cILRTexLS -->				<item>0.8984375</item>
+        <!-- cILRTexTT -->				<item>0.49609375</item>
+        <!-- cILRTexRS -->				<item>0.9296875</item>
+        <!-- cILRTexBT -->				<item>0.0</item>
+        <!-- cIMTex -->					<item>@drawable/csv_earth_fire_c_i_m_tex</item>
+        <!-- cMinBorderGBLRP -->		<item>0.022</item>
+        <!-- cMinBorderGBTBP -->		<item>0.24</item>
+        <!-- cMinBorderXP -->			<item>0.01</item>
+        <!-- cMinBorderYP -->			<item>0.0</item>
         <!-- cMinBorderCYP -->			<item>0.005</item>
-        <!-- cWXMult -->				<item>1.335</item>
-        <!-- cWTex -->					<item>@drawable/csv_air_cells_tex</item>
+        <!-- cWXMult -->				<item>1.25</item>
+        <!-- cWTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
         <!-- cWTexLS -->				<item>0.0</item>
-        <!-- cWTexTT -->				<item>0.99609375</item>
-        <!-- cWTexRS -->				<item>0.34765625</item>
+        <!-- cWTexTT -->				<item>0.94921875</item>
+        <!-- cWTexRS -->				<item>0.44140625</item>
         <!-- cWTexBT -->				<item>0.0</item>
-        <!-- cTex -->					<item>@drawable/csv_air_cells_tex</item>
-        <!-- cTexLS -->					<item>0.359375</item>
-        <!-- cTexTT -->					<item>0.62109375</item>
-        <!-- cTexRS -->					<item>0.671875</item>
+        <!-- cTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cTexLS -->					<item>0.453125</item>
+        <!-- cTexTT -->					<item>0.43359375</item>
+        <!-- cTexRS -->					<item>0.8828125</item>
         <!-- cTexBT -->					<item>0.0</item>
-        <!-- cSTex -->					<item>@drawable/csv_air_cells_tex</item>
-        <!-- cSTexLS -->				<item>0.68359375</item>
-        <!-- cSTexTT -->				<item>0.62109375</item>
-        <!-- cSTexRS -->				<item>0.99609375</item>
-        <!-- cSTexBT -->				<item>0.0</item>
-        <!-- cPMinBorderGBEP -->		<item>0.018</item>
-        <!-- cPMinBorderCEP -->			<item>0.018</item>
+        <!-- cSTex -->					<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- cSTexLS -->				<item>0.453125</item>
+        <!-- cSTexTT -->				<item>0.8515625</item>
+        <!-- cSTexRS -->				<item>0.8828125</item>
+        <!-- cSTexBT -->				<item>0.4453125</item>
+        <!-- cPMinBorderGBEP -->		<item>0.075</item>
+        <!-- cPMinBorderCEP -->			<item>0.075</item>
         <!-- cPMinBorderTextETBP -->	<item>0.005</item>
-        <!-- cPFirstTextColor -->		<item>#ff0000ff</item>
-        <!-- cPSecondTextColor -->		<item>#ff000000</item>
-        <!-- cPLRTex -->				<item>@drawable/csv_air_tex_1</item>
-        <!-- cPLRTexLS -->				<item>0.943359375</item>
-        <!-- cPLRTexTT -->				<item>0.76953125</item>
-        <!-- cPLRTexRS -->				<item>0.998046875</item>
-        <!-- cPLRTexBT -->				<item>0.66015625</item>
-        <!-- cPMTex -->					<item>@drawable/csv_air_c_p_m_tex</item>
-        <!-- pIMinBorderGBEP -->		<item>0.02</item>
-        <!-- pIMinBorderCEP -->			<item>0.02</item>
+        <!-- cPFirstTextColor -->		<item>#ffffff</item>
+        <!-- cPSecondTextColor -->		<item>#ffffff</item>
+        <!-- cPLRTex -->				<item>@drawable/pause_loading</item>
+        <!-- cPLRTexLS -->				<item>0.984375</item>
+        <!-- cPLRTexTT -->				<item>0.9921875</item>
+        <!-- cPLRTexRS -->				<item>0.9921875</item>
+        <!-- cPLRTexBT -->				<item>0.0</item>
+        <!-- cPMTex -->					<item>@drawable/csv_transp_tex</item>
+        <!-- pIMinBorderGBEP -->		<item>0.08</item>
+        <!-- pIMinBorderCEP -->			<item>0.08</item>
         <!-- pIMinBorderTextETBP -->	<item>0.1</item>
         <!-- pIFirstTextColor -->		<item>#ff0000ff</item>
         <!-- pISecondTextColor -->		<item>#ff000000</item>
-        <!-- pILRTex -->				<item>@drawable/pause_loading</item>
-        <!-- pILRTexLS -->				<item>0.984375</item>
-        <!-- pILRTexTT -->				<item>0.9921875</item>
-        <!-- pILRTexRS -->				<item>0.9921875</item>
+       	<!-- pILRTex -->				<item>@drawable/csv_earth_fire_cells_tex</item>
+        <!-- pILRTexLS -->				<item>0.8984375</item>
+        <!-- pILRTexTT -->				<item>0.49609375</item>
+        <!-- pILRTexRS -->				<item>0.9296875</item>
         <!-- pILRTexBT -->				<item>0.0</item>
-        <!-- pIMTex -->					<item>@drawable/csv_air_p_i_m_tex</item>
+        <!-- pIMTex -->					<item>@drawable/csv_earth_fire_c_i_m_tex</item>
         <!-- gSizeGBP -->				<item>0.03</item>
         <!-- gMinBorderCEP -->			<item>0.1</item>
-        <!-- gTex -->					<item>@drawable/csv_air_tex_1</item>
-        <!-- gTexLS -->					<item>0.904296875</item>
-        <!-- gTexTT -->					<item>0.654296875</item>
-        <!-- gTexRS -->					<item>0.994140625</item>
-        <!-- gTexBT -->					<item>0.564453125</item>
+        <!-- gTex -->					<item>@drawable/csv_fire_tex_1</item>
+        <!-- gTexLS -->					<item>0.0</item>
+        <!-- gTexTT -->					<item>0.9990234375</item>
+        <!-- gTexRS -->					<item>0.02734375</item>
+        <!-- gTexBT -->					<item>0.96875</item>
         
         <!-- lTex -->					<item>@drawable/logo</item>
         <!-- lTexLS -->					<item>0.0</item>

@@ -1,6 +1,6 @@
 package rf.yagodar.glump.parser;
 
-import rf.yagodar.manqala.output.SystemMessage;
+import rf.yagodar.manqala.free.free.output.SystemMessage;
 import android.app.Activity;
 
 public class SurfaceViewPropertyFloatParser implements ISurfaceViewPropertyParser {

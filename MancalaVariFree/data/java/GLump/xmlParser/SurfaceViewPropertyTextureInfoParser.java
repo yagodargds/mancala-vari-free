@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 import rf.yagodar.glump.bitmap.ResBitmapManager;
 import rf.yagodar.glump.polygon.TextureInfo;
-import rf.yagodar.manqala.output.SystemMessage;
+import rf.yagodar.manqala.free.free.output.SystemMessage;
 
 public class SurfaceViewPropertyTextureInfoParser implements ISurfaceViewPropertyParser {
 	public static SurfaceViewPropertyTextureInfoParser getInstance() {

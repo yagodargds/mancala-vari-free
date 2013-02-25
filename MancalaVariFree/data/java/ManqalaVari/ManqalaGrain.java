@@ -1,4 +1,4 @@
-package rf.yagodar.manqala.logic.model.combat;
+package rf.yagodar.manqala.free.free.logic.model.combat;
 
 //TODO запилить GRAIN
 //TODO DOC

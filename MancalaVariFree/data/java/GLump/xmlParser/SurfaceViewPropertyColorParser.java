@@ -1,7 +1,7 @@
 package rf.yagodar.glump.parser;
 
 import android.app.Activity;
-import rf.yagodar.manqala.output.SystemMessage;
+import rf.yagodar.manqala.free.free.output.SystemMessage;
 
 public class SurfaceViewPropertyColorParser implements ISurfaceViewPropertyParser {
 	public static SurfaceViewPropertyColorParser getInstance() {

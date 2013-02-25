@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">MancalaVari</string>
-    <string name="version_name">v.1.0.1.0_25.Feb.13</string>
+    <string name="admob_publisher_id">a1512b697c2fc09</string>
+    
+    <string name="app_name">MancalaVari Free</string>
+    <string name="version_name">v.1.0.3.0_26.Feb.13</string>
     
     <string name="air_label">Air</string>
     <string name="earth_label">Earth</string>
