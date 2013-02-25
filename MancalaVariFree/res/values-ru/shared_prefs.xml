@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shared_prefs_file_name">shared_prefs</string>
+    <string name="pref_key_company_state">prefs_company_state</string>
+    <string name="pref_key_start_new_combat">prefs_start_new_combat</string>
+    <string name="pref_key_first_name">prefs_first_name</string>
+    <string name="pref_key_second_name">prefs_second_name</string>
+    <string name="pref_key_s_v_key">prefs_s_v_key</string>
+    <string name="pref_key_walketh">prefs_walketh</string>
+    
+    <string name="pref_key_toogle_music">toogle_music</string>
+</resources>
