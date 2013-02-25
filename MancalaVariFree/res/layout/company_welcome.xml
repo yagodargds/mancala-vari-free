@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.2"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/menu_logo" />
+
+    <TextView android:id="@+id/cw_enter_name_err_tw"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.133"
+            android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.133"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/cw_enter_name_label" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.33" />
+        
+        <EditText android:id="@+id/cw_enter_name_et"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="0.33"
+	        android:inputType="text" />
+        
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.33" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.165" />
+        
+        <Button
+            android:id="@+id/btn_cw_back"
+            style="@style/ManqalaVariButtonTheme"
+            android:onClick="onClickHandler"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.33"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_back_label" />
+        
+        <Button
+            android:id="@+id/btn_cw_apply"
+            style="@style/ManqalaVariButtonTheme"
+            android:onClick="onClickHandler"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.33"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_apply_label" />
+        
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.165" />
+        
+    </LinearLayout>
+    
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.133" />
+    
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.133" />
+
+</LinearLayout>

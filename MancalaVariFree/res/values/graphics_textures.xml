@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    
+    <array name="textures_to_load">
+        <item>@drawable/logo</item>
+        <item>@drawable/button_deselected</item>
+        <item>@drawable/button_selected</item>
+        <item>@drawable/csv_air_back_tex</item>
+        <item>@drawable/csv_air_c_i_m_tex</item>
+        <item>@drawable/csv_air_c_p_m_tex</item>
+        <item>@drawable/csv_air_cells_tex</item>
+        <item>@drawable/csv_air_p_i_m_tex</item>
+        <item>@drawable/csv_air_tex_1</item>
+        <item>@drawable/pause_loading</item>
+        <item>@drawable/pause_panel</item>
+    </array>
+</resources>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.2"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/menu_logo" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.133"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/btn_mm_multiplayer_label" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05" />
+        
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:gravity="center_vertical|center_horizontal" 
+            android:text="@string/mp_enter_first_name_label" />
+        
+        <EditText
+            android:id="@+id/mp_enter_first_name_et"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:inputType="text"
+            android:text="@string/player_1_player_name" />
+        
+        <TextView android:id="@+id/mp_first_name_err"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_vertical|center_horizontal" />
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05" />
+        
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:gravity="center_vertical|center_horizontal" 
+            android:text="@string/mp_enter_second_name_label" />
+        
+        <EditText
+            android:id="@+id/mp_enter_second_name_et"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:inputType="text"
+            android:text="@string/player_2_player_name" />
+        
+        <TextView android:id="@+id/mp_second_name_err"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05"
+            android:gravity="center_vertical|center_horizontal" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/mp_choose_gameboard_label" />
+
+        <Spinner android:id="@+id/mp_choose_gameboard_spinner"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.45"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.05" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.165" />
+        
+        <Button
+            android:id="@+id/btn_mp_back"
+            style="@style/ManqalaVariButtonTheme"
+            android:onClick="onClickHandler"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.33"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_back_label" />
+        
+        <Button
+            android:id="@+id/btn_mp_apply"
+            style="@style/ManqalaVariButtonTheme"
+            android:onClick="onClickHandler"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.33"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_apply_label" />
+        
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.165" />
+        
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.133" />
+
+</LinearLayout>

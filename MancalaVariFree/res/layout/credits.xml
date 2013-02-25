@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.2"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/menu_logo" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:text="@string/btn_mm_credits_label" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.401" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+        
+            <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/app_name" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/version_name" />
+            
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_1" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_2" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_3" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_4" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_5" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_6" />
+	        
+	        <TextView
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:text="@string/credits_text_7" />
+	        
+        </LinearLayout>
+    </ScrollView>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.133"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.33" />
+        
+        <Button
+            android:id="@+id/btn_cr_back"
+            style="@style/ManqalaVariButtonTheme"
+            android:onClick="onClickHandler"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.33"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/btn_back_label" />
+        
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.33" />
+        
+    </LinearLayout>
+    
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.133" />
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="your_turn_$user$">Your turn, %1$s!</string>
+    <string name="draw">Draw!</string>
+    <string name="you_lose_$user$">You lose, %1$s!</string>
+    <string name="you_won_$user$">You won, %1$s!</string>
+    <string name="illegal_turn">Illegal turn!</string>
+    <string name="bonus">Bonus!</string>
+    
+    <string name="pause_header">Pause</string>
+    <string name="pause_label">Game paused.</string>
+    <string name="game_over_header">The End</string>
+    <string name="btn_c_restart_label">Restart</string>
+    <string name="btn_c_continue_label">Continue</string>
+    <string name="btn_c_exit_label">Exit</string>
+</resources>

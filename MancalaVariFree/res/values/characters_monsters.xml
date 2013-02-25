@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_monster_name">Phone</string>
+    <string name="earth_monster_name">Talpidae</string>
+    <string name="air_monster_name">Dromaius</string>
+    <string name="fire_monster_name">Bovini</string>
+    <string name="water_monster_name">Dipnoi</string>
+    
+    <string-array name="monster_names">
+        <item>@string/phone_monster_name</item>
+        <item>@string/earth_monster_name</item>
+        <item>@string/air_monster_name</item>
+        <item>@string/fire_monster_name</item>
+        <item>@string/water_monster_name</item>
+    </string-array>
+</resources>

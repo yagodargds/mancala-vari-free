@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="your_turn_$user$">Ваш ход, %1$s!</string>
+    <string name="draw">Ничья!</string>
+    <string name="you_lose_$user$">Вы проиграли, %1$s!</string>
+    <string name="you_won_$user$">Вы выиграли, %1$s!</string>
+    <string name="illegal_turn">Недопустимый ход!</string>
+    <string name="bonus">Бонус!</string>
+    
+    <string name="pause_header">Пауза</string>
+    <string name="pause_label">Игра приостановлена.</string>
+    <string name="game_over_header">Конец</string>
+    <string name="btn_c_restart_label">Заново</string>
+    <string name="btn_c_continue_label">Продолжить</string>
+    <string name="btn_c_exit_label">Выход</string>
+</resources>

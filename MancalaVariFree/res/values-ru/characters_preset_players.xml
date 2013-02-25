@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_1_player_name">Игрок 1</string>
+    <string name="player_2_player_name">Игрок 2</string>
+    <string name="master_player_name">Хозяин</string>
+</resources>

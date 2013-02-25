@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="player_1_player_name">Player 1</string>
+    <string name="player_2_player_name">Player 2</string>
+    <string name="master_player_name">Master</string>
+    
+    <string-array name="preset_player_names">
+        <item>@string/player_1_player_name</item>
+        <item>@string/player_2_player_name</item>
+        <item>@string/master_player_name</item>
+    </string-array>
+</resources>

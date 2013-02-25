@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">MancalaVari</string>
+    <string name="version_name">v.1.0.1.0_25.Feb.13</string>
+    
+    <string name="air_label">Air</string>
+    <string name="earth_label">Earth</string>
+    <string name="fire_label">Fire</string>
+    
+    <string name="err_label">Error!</string>
+    <string name="btn_back_label">Back</string>
+    <string name="btn_apply_label">Apply</string>
+    <string name="enter_name_err_empty_label">The name can not be empty!</string>
+    
+    <string name="btn_mm_continue_label">Continue</string>
+    <string name="btn_mm_company_label">Company</string>
+    <string name="btn_mm_fastgame_label">Fast game</string>
+    <string name="btn_mm_multiplayer_label">Multiplayer</string>
+    <string name="btn_mm_tutorial_label">How to play</string>
+    <string name="btn_mm_options_label">Options</string>
+    <string name="btn_mm_credits_label">Credits</string>
+    <string name="btn_mm_exit_label">Exit</string>
+    
+    <string name="cw_enter_name_label">Enter your name:</string>
+    <string name="cw_enter_name_err_occupied_label">The name is occupied!</string>
+    
+    <string name="mp_enter_first_name_label">Enter first player name:</string>
+    <string name="mp_enter_second_name_label">Enter second player name:</string>
+    <string name="mp_choose_gameboard_label">Choose gameboard:</string>
+    
+    <string name="t_text_1">The rules VARI\n\n
+		VARI - the name of described game of family MANCALA.\n
+		Grain - play unit, giving the players before the game to turn to stored grains.\n
+		The stored grain - play unit, corresponding player`s points.\n
+		Hole - cell, which stores player`s grains.\n
+		Barn - cell, getting in which grain is converted to stored grain.\n	
+		Field - game board with holes and barns.\n\n
+		This is a puzzle game for 2 participants.\n
+		On the field, there are 2 rows of 6 holes and 2 barns.\n
+		Each player is owned by a nearest number of holes and the right barn.\n
+		Before the party starts, in each hole of the row is placed on four grains.\n
+		The aim of the game is to save as many grains, that is, as much as possible to shift the grain from the holes in a barn.\n
+    </string>
+    <string name="t_text_2">The moves are executed one by one. Any move is consists of removing all the grains that are in one hole of own series, and put them in a row, one in the neighboring holes, moving counterclockwise.\n\n
+		In his barn grain is placed, but not in another.\n\n
+		If last of lay out grains falls into a hole of a number of partner, which after folding contains 2 or 3 grains, including puted grain, then the player takes all the grain out of the hole and puts them in own barn.\n
+    </string>
+    <string name="t_text_3">In the case where a number of partner to the right and to the left of the hole, the prescribed removal of grains, are the holes that contain 2 or 3 grains, the grains from these holes is also removable. The total number of exempt holes may be three: hole, which got the last of the lay out the grain, and the hole on the left and right of it.\n\n
+		Quite often there is a situation where when the progress in the hole accumulated 12 or more grains. Then when traversing holes during folding grain this hole is skipped, and the grain is put in following it hole.\n\n
+		In a single stroke grain can not go back to the hole from which it is removed.\n\n
+		It is forbidden to deprive a partner of the possible course. This means that its course can not be removed from his last grain of the series. If the partner next move himself obliged to take out the last grain of his series of holes, the next move should at least put a single grain in his series.\n\n
+		If the final rule is not possible, the game ends. Wins player, which has retained more of the grains. With an equal amount of stored grains party is considered a draw.
+	</string>
+	
+    <string name="btn_o_toogle_music_on_label">Music ON</string>
+    <string name="btn_o_toogle_music_off_label">Music OFF</string>
+    
+    <string name="credits_text_1">Programmer</string>
+    <string name="credits_text_2">Andrey Yagodarov</string>
+    <string name="credits_text_3">Artists</string>
+    <string name="credits_text_4">Leonid Lapshin</string>
+    <string name="credits_text_5">Dmitriy Fedorov</string>
+    <string name="credits_text_6">Soundman</string>
+    <string name="credits_text_7">Anton Sagneev</string>
+</resources>
