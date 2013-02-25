@@ -1,0 +1,4 @@
+MancalaVariFree
+===============
+
+Бесплатная версия MancalaVari
