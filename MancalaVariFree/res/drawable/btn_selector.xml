@@ -4,5 +4,7 @@
           android:state_pressed="true" />
     <item android:drawable="@drawable/btn_pressed"
           android:state_selected="true" />
+    <item android:drawable="@drawable/btn_pressed"
+          android:state_enabled="false" />
     <item android:drawable="@drawable/btn_released" />
 </selector>
