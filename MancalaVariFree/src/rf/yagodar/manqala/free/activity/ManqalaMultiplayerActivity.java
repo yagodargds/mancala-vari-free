@@ -83,6 +83,7 @@ public class ManqalaMultiplayerActivity extends Activity {
 				sharedPrefsEditor.putString(getString(R.string.pref_key_second_name), secondName);
 				sharedPrefsEditor.putInt(getString(R.string.pref_key_s_v_key), sVKey);
 				sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), 0);
+				sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 				startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 				finish();
 			}
@@ -92,6 +93,12 @@ public class ManqalaMultiplayerActivity extends Activity {
 		}
 		
 		sharedPrefsEditor.commit();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
 	}
 	
 	@Override

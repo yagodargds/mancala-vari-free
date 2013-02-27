@@ -28,6 +28,7 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putString(getString(R.string.pref_key_second_name), ManqalaCharactersDBManager.getInstance().getMasterName());
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_s_v_key), R.array.csv_air);
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
 		case R.id.btn_c_st_2:
@@ -37,6 +38,7 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putString(getString(R.string.pref_key_second_name), ManqalaCharactersDBManager.getInstance().getMasterName());
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_s_v_key), R.array.csv_earth);
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
 		case R.id.btn_c_st_3:
@@ -46,6 +48,7 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putString(getString(R.string.pref_key_second_name), ManqalaCharactersDBManager.getInstance().getMasterName());
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_s_v_key), R.array.csv_fire);
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
 		default:
@@ -53,6 +56,13 @@ public class ManqalaCompanyActivity extends Activity {
 		}
 		
 		sharedPrefsEditor.commit();
+		
+		finish();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
 	}
 	
 	@Override

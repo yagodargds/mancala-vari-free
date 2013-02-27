@@ -6,6 +6,7 @@ import rf.yagodar.glump.animation.AnimScenInfo;
 import rf.yagodar.glump.animation.HomogenAnimScenBuilder;
 import rf.yagodar.glump.model.GLumpSVModel;
 import rf.yagodar.glump.point.Point2D;
+import rf.yagodar.glump.polygon.AbstractPolygon;
 import rf.yagodar.glump.polygon.Rectangle;
 
 public class ManqalaVariCellModel extends GLumpSVModel<Rectangle> {
@@ -74,7 +75,7 @@ public class ManqalaVariCellModel extends GLumpSVModel<Rectangle> {
 				animScenInfos.add(new AnimScenInfo(transpGrainNode.get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animTime)));
 			}
 			
-			transpGrainModelIndx = 0;
+			resetTranspGrainModelIndx();
 		}
 		
 		grainsCount = 0;
@@ -82,35 +83,18 @@ public class ManqalaVariCellModel extends GLumpSVModel<Rectangle> {
 		return animScenInfos;
 	}
 	
-	public ArrayList<AnimScenInfo> animGrainModels(int newGrainsCount, Float[] animAddNodes, Float[] animDelNodes, long animTime) {
-		ArrayList<AnimScenInfo> animScenInfos = new ArrayList<AnimScenInfo>();
-
-		ArrayList<GLumpSVModel<?>> animGrainModels;
-		
-		if(grainsCount < newGrainsCount) {
-			animGrainModels = getGrainModels(true);
-			
-			for (int i = 0; i < newGrainsCount - grainsCount && i < animGrainModels.size(); i++) {
-				animScenInfos.add(new AnimScenInfo(animGrainModels.get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(animAddNodes, animTime)));
-			}
-			
-			grainsCount += animScenInfos.size();
-		}
-		else if(grainsCount > newGrainsCount) {
-			animGrainModels = getGrainModels(false);
-			
-			for (int i = 0; i < grainsCount - newGrainsCount && i < animGrainModels.size(); i++) {
-				animScenInfos.add(new AnimScenInfo(animGrainModels.get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animTime)));
-			}
-			
-			grainsCount -= animScenInfos.size();
-		}
-
-		return animScenInfos;
-	}
-	
 	public void resetTranspGrainModelIndx() {
 		transpGrainModelIndx = 0;
+	}
+	
+	public void initDelGrainModels() {
+		for (GLumpSVModel<?> nonTranspGrainModel : getGrainModels(false)) {
+			nonTranspGrainModel.getPolygon().setAlpha(AbstractPolygon.TRANSPARENT_ALPHA);
+		}
+		
+		resetTranspGrainModelIndx();
+		
+		grainsCount = 0;
 	}
 	
 	private ArrayList<GLumpSVModel<?>> getGrainModels(boolean transparent) {

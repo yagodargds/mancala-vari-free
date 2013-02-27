@@ -31,7 +31,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		return getSVBlank().getGameBoardModel();
 	}
 	
-	public ArrayList<GLumpSVRendererQueueNode> drawApplyMoveResult(ManqalaVariCellModel startCellModel, ArrayList<ManqalaMoveResultStep> moveResultSteps,  ManqalaCombatVari manqalaCombatVari) {
+	public ArrayList<GLumpSVRendererQueueNode> drawApplyMoveResult(ManqalaVariCellModel startCellModel, ArrayList<ManqalaMoveResultStep> moveResultSteps, ManqalaCombatVari manqalaCombatVari) {
 		ArrayList<GLumpSVRendererQueueNode> rendererQueueNodes = new ArrayList<GLumpSVRendererQueueNode>();
 		
 		if(startCellModel != null && moveResultSteps != null && !moveResultSteps.isEmpty() && manqalaCombatVari != null) {
@@ -146,6 +146,8 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		
 		rendererQueueNodes.add(showCPPIText());
 		
+		clearPauseTextModels();
+		
 		return rendererQueueNodes;
 	}
 	
@@ -171,6 +173,40 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 	
 	public GLumpSVRendererQueueNode drawExitButtonDeselect() {
 		return drawButtonDeselect(getSVBlank().getPausePlateModel().getpPExitButton(), getContext().getString(R.string.btn_c_exit_label), getSVBlank().getPausePlateModel().getpPBDTextColor());
+	}
+	
+	public void clearPauseTextModels() {
+		if(getSVBlank().getPausePlateModel().getpPTextLabelModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPTextLabelModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonSelectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPContinueButton().getButtonSelectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonSelectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPRestartButton().getButtonSelectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPExitButton().getButtonSelectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPExitButton().getButtonSelectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel().getTextModel().clearChildModels(true);
+		}
+
+		if(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel().getTextModel() != null) {
+			getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel().getTextModel().clearChildModels(true);
+		}
 	}
 	
 	private GLumpSVRendererQueueNode drawButtonSelect(GLumpButtonModel button, String text, int textColor) {
@@ -276,9 +312,12 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 			}
 
 			int newGrainsCount = manqalaCombatVari.getGameBoard().getGameBoardCells().getCellByGlobalPosId((byte) cellGlobalPosId).getGrainsCount();
+			
 			modelEditInfos.add(cellPointsModel.drawText("" + newGrainsCount, getSVBlank().getGameBoardModel().getCellPointsTextColors()[colorIndex]));
-			animScenInfos.addAll(cellModel.animDelGrainModels(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC));
+			
+			cellModel.initDelGrainModels();
 			animScenInfos.addAll(cellModel.animAddGrainModels(newGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC));
+			
 			cellModel.resetTranspGrainModelIndx();
 		}
 
@@ -297,7 +336,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 
 			ManqalaVariCellModel cellModel = getSVBlank().getGameBoardModel().getCellsModels()[cellGlobalPosId];
 			GLumpSVModel<?> cellPointsModel = getSVBlank().getGameBoardModel().getCellsPointsModels()[cellGlobalPosId];
-
+			
 			int colorIndex = 0;
 			if(cellGlobalPosId > SVari.CELLS_COUNT) {				
 				colorIndex = 1;
@@ -322,6 +361,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 				rendererQueueNodes.add(delBonusGrainsRendererNode);
 
 				GLumpSVRendererQueueNode addBonusGrainsRendererNode = new GLumpSVRendererQueueNode();
+				
 				ManqalaVariCellModel warehouseCellModel = getSVBlank().getGameBoardModel().getCellsModels()[walkethWarehouseGlobalCellPosId];
 				GLumpSVModel<?> warehouseCellPointsModel = getSVBlank().getGameBoardModel().getCellsPointsModels()[walkethWarehouseGlobalCellPosId];
 				addBonusGrainsRendererNode.addAllAnimScenInfo(warehouseCellModel.animAddGrainModels(addToWarehouseGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
@@ -337,7 +377,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 				else {
 					rendererQueueNode.addAnimScenInfo(cellModel.animIncGrainModel(APPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
 				}
-
+				
 				rendererQueueNode.addModelEditInfo(cellPointsModel.drawText("" + cellModel.getGrainsCount(), getSVBlank().getGameBoardModel().getCellPointsTextColors()[colorIndex]));
 				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, cellPointsModel.getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
 

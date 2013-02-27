@@ -70,11 +70,16 @@ public class BitmapProvider {
 	}
 	
 	public int getTextureName(int bitmapId) {
-		if(textureNames == null || bitmapId < 0 || bitmapId >= textureNames.length) {
+		try {
+			if(textureNames == null || bitmapId < 0 || bitmapId >= textureNames.length) {
+				return 0;
+			}
+
+			return textureNames[bitmapId];
+		}
+		catch(Exception e) {
 			return 0;
 		}
-		
-		return textureNames[bitmapId];
 	}
 	
 	public void clearTextureNames() {

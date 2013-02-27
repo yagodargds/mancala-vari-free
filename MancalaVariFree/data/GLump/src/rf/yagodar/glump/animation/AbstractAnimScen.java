@@ -50,14 +50,20 @@ public abstract class AbstractAnimScen implements Cloneable {
 	
 	public boolean applyNextStep(AbstractPolygon polygon) {
 		if(animations != null && polygon != null) {
-			if(animationIndx < animations.size()) {
-				if(!animations.get(animationIndx).applyNextStep(polygon)) {
-					animationIndx++;
-				}
+			try {
+				if(animationIndx < animations.size()) {
+					if(!animations.get(animationIndx).applyNextStep(polygon)) {
+						animationIndx++;
+					}
 
-				return true;
+					return true;
+				}
+				else {
+					animationIndx = 0;
+					return false;
+				}
 			}
-			else {
+			catch(Exception e) {
 				animationIndx = 0;
 				return false;
 			}

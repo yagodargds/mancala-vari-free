@@ -41,6 +41,12 @@ public class ManqalaCompanyWellcomeActivity extends Activity {
 	}
 	
 	@Override
+	public void onBackPressed() {
+		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
+	}
+	
+	@Override
 	protected void onPause() {
 		super.onPause();
 		ManqalaMediaPlayer.getInstance().pause();

@@ -24,6 +24,7 @@ import rf.yagodar.manqala.free.logic.model.combat.ManqalaCell;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
@@ -138,6 +139,10 @@ public class ManqalaCombatVariActivity extends Activity {
 				manqalaCombatVari.setCompanyState(sharedPref.getInt(getString(R.string.pref_key_company_state), -1));
 				
 				ManqalaCombatVariDBManager.getInstance().saveManqalaCombatVari(manqalaCombatVari);
+				
+				Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
+				sharedPrefsEditor.putBoolean(getString(R.string.pref_key_start_new_combat), false);
+				sharedPrefsEditor.commit();
 			}
 			else {
 				manqalaCombatVari = ManqalaCombatVariDBManager.getInstance().getSavedManqalaCombatVari();
@@ -147,21 +152,23 @@ public class ManqalaCombatVariActivity extends Activity {
 		}
 		
 		if(manqalaCombatVariSV != null && manqalaCombatVari != null) {
+			manqalaCombatVariSV.setRenderer();
+			
 			setContentView(manqalaCombatVariSV);
 
 			playerPauseRendererQueueListener = new PlayerPauseRendererQueueListener();
-			playerRendererQueueListener = new PlayerRendererQueueListener(manqalaCombatVari, playerPauseRendererQueueListener, manqalaCombatVariSV);
+			playerRendererQueueListener = new PlayerRendererQueueListener(this, manqalaCombatVari);
 			
 			if(manqalaCombatVari.getFirstOpponent().isMonster()) {
-				monsterRendererQueueListener = new MonsterRendererQueueListener((ManqalaMonster) manqalaCombatVari.getFirstOpponent(), manqalaCombatVari, manqalaCombatVariSV, playerRendererQueueListener, playerPauseRendererQueueListener);
+				monsterRendererQueueListener = new MonsterRendererQueueListener(this, (ManqalaMonster) manqalaCombatVari.getFirstOpponent(), manqalaCombatVari, manqalaCombatVariSV, playerRendererQueueListener, playerPauseRendererQueueListener);
 			}
 			else if(manqalaCombatVari.getSecondOpponent().isMonster()) {
-				monsterRendererQueueListener = new MonsterRendererQueueListener((ManqalaMonster) manqalaCombatVari.getSecondOpponent(), manqalaCombatVari, manqalaCombatVariSV, playerRendererQueueListener, playerPauseRendererQueueListener);
+				monsterRendererQueueListener = new MonsterRendererQueueListener(this, (ManqalaMonster) manqalaCombatVari.getSecondOpponent(), manqalaCombatVari, manqalaCombatVariSV, playerRendererQueueListener, playerPauseRendererQueueListener);
 			}
 			
-			playerRestartRendererQueueListener = new PlayerRestartRendererQueueListener(manqalaCombatVariSV, playerPauseRendererQueueListener, manqalaCombatVari, playerRendererQueueListener, monsterRendererQueueListener);
+			playerRestartRendererQueueListener = new PlayerRestartRendererQueueListener(this, manqalaCombatVariSV, playerPauseRendererQueueListener, manqalaCombatVari, playerRendererQueueListener, monsterRendererQueueListener);
 			playerContinueRendererQueueListener = new PlayerContinueRendererQueueListener(manqalaCombatVariSV);
-			playerExitRendererQueueListener = new PlayerExitRendererQueueListener(this);
+			playerExitRendererQueueListener = new PlayerExitRendererQueueListener(this, manqalaCombatVari);
 			
 			GLumpSVRendererQueue rendererQueue = new GLumpSVRendererQueue();
 			
@@ -183,6 +190,8 @@ public class ManqalaCombatVariActivity extends Activity {
 			
 			manqalaCombatVariSV.requestMainRender(rendererQueue);
 		}
+		
+		ManqalaActivityManager.getInstance().setCombatActivity(this);
 	}
 	
 	@Override
@@ -201,43 +210,46 @@ public class ManqalaCombatVariActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		
-		if(manqalaCombatVariSV != null && !manqalaCombatVariSV.isMainRenderPaused()) {
-			showPausePlate();
-		}
-		
-		paused = true;
-		
 		ManqalaMediaPlayer.getInstance().pause();
+		
+		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE);
+		if(!sharedPref.getAll().isEmpty()) {
+			if(sharedPref.contains(getString(R.string.pref_key_combat_paused)) && !sharedPref.getBoolean(getString(R.string.pref_key_combat_paused), false) && manqalaCombatVariSV != null) {
+				showPausePlate();
+			}
+		}
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
 		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE);
-		if(!sharedPref.getAll().isEmpty() && sharedPref.contains(getString(R.string.pref_key_toogle_music))) {
-			if(sharedPref.getBoolean(getString(R.string.pref_key_toogle_music), true)) {
+		if(!sharedPref.getAll().isEmpty()) {
+			if(sharedPref.contains(getString(R.string.pref_key_toogle_music)) && sharedPref.getBoolean(getString(R.string.pref_key_toogle_music), true)) {
 				ManqalaMediaPlayer.getInstance().resume();
 			}
+			
+			if(sharedPref.contains(getString(R.string.pref_key_combat_paused)) && sharedPref.getBoolean(getString(R.string.pref_key_combat_paused), false) && manqalaCombatVariSV != null) {
+				showPausePlate();
+			}
 		}
-		
-		if(paused && manqalaCombatVariSV != null) {
-			showPausePlate();
-		}
-		
-		paused = false;
 	}
 	
 	@Override
 	protected void onDestroy() {		
 		super.onDestroy();
-		BitmapProvider.getInstance().clearTextureNames();
 		
 		if(manqalaCombatVariSV != null) {
 			manqalaCombatVariSV.interruptMainRenderThread();
+			
+			manqalaCombatVariSV = null;
 		}
+		
+		BitmapProvider.getInstance().clearTextureNames();
 	}
 	
-	private void showPausePlate() {
+	public void showPausePlate() {
 		playerPauseRendererQueueListener.setAllowTouchEvent(false);
 		
 		manqalaCombatVariSV.pauseMainRender();
@@ -245,12 +257,22 @@ public class ManqalaCombatVariActivity extends Activity {
 		GLumpSVRendererQueue rendererQueue = new GLumpSVRendererQueue();
 		
 		rendererQueue.addListener(playerPauseRendererQueueListener);
-		rendererQueue.offerAllNodes(manqalaCombatVariSV.showPausePlate());
+		
+		if(manqalaCombatVari.isCombating()) {
+			rendererQueue.offerAllNodes(manqalaCombatVariSV.showPausePlate());
+		}
+		else {
+			rendererQueue.offerAllNodes(manqalaCombatVariSV.showGameOverPlate(manqalaCombatVari));
+		}
 		
 		manqalaCombatVariSV.requestAdditionalRender(rendererQueue);
+		
+		Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
+		sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), true);
+		sharedPrefsEditor.commit();
 	}
 	
-	private void hidePausePlate() {
+	public void hidePausePlate() {
 		playerPauseRendererQueueListener.setAllowTouchEvent(false);
 		
 		GLumpSVRendererQueue rendererQueue = new GLumpSVRendererQueue();
@@ -263,6 +285,10 @@ public class ManqalaCombatVariActivity extends Activity {
 		rendererQueue.offerAllNodes(manqalaCombatVariSV.hidePausePlate());
 		
 		manqalaCombatVariSV.requestAdditionalRender(rendererQueue);
+		
+		Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
+		sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
+		sharedPrefsEditor.commit();
 	}
 
 	private ManqalaCombatVari manqalaCombatVari;
@@ -273,5 +299,4 @@ public class ManqalaCombatVariActivity extends Activity {
 	private PlayerPauseRendererQueueListener playerPauseRendererQueueListener;
 	private PlayerRendererQueueListener playerRendererQueueListener;
 	private MonsterRendererQueueListener monsterRendererQueueListener;
-	private boolean paused;
 }

@@ -2,12 +2,17 @@ package rf.yagodar.manqala.free.drawing.listener;
 
 import rf.yagodar.glump.renderer.GLumpSVRendererQueue;
 import rf.yagodar.glump.renderer.IGLumpSVRendererQueueListener;
+import rf.yagodar.manqala.free.R;
+import rf.yagodar.manqala.free.activity.ManqalaCombatVariActivity;
 import rf.yagodar.manqala.free.database.ManqalaCombatVariDBManager;
 import rf.yagodar.manqala.free.drawing.view.ManqalaCombatVariSV;
 import rf.yagodar.manqala.free.logic.combat.ManqalaCombatVari;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class PlayerRestartRendererQueueListener implements IGLumpSVRendererQueueListener {
-	public PlayerRestartRendererQueueListener(ManqalaCombatVariSV manqalaCombatVariSV, PlayerPauseRendererQueueListener playerPauseRendererQueueListener, ManqalaCombatVari manqalaCombatVari, PlayerRendererQueueListener playerRendererQueueListener, MonsterRendererQueueListener monsterRendererQueueListener) {
+	public PlayerRestartRendererQueueListener(ManqalaCombatVariActivity activity, ManqalaCombatVariSV manqalaCombatVariSV, PlayerPauseRendererQueueListener playerPauseRendererQueueListener, ManqalaCombatVari manqalaCombatVari, PlayerRendererQueueListener playerRendererQueueListener, MonsterRendererQueueListener monsterRendererQueueListener) {
+		this.activity = activity;
 		this.manqalaCombatVariSV = manqalaCombatVariSV;
 		this.playerPauseRendererQueueListener = playerPauseRendererQueueListener;
 		this.manqalaCombatVari = manqalaCombatVari;
@@ -19,6 +24,13 @@ public class PlayerRestartRendererQueueListener implements IGLumpSVRendererQueue
 	public void onRendered() {
 		if(manqalaCombatVariSV != null && playerPauseRendererQueueListener != null && manqalaCombatVari != null && playerRendererQueueListener != null) {
 			manqalaCombatVariSV.interruptMainRenderThread();
+			
+			if(activity != null) {
+				SharedPreferences sharedPref = activity.getApplicationContext().getSharedPreferences(activity.getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE);
+				if(!sharedPref.getAll().isEmpty() && sharedPref.contains(activity.getString(R.string.pref_key_start_new_combat))) {
+					manqalaCombatVari.start(sharedPref.getInt(activity.getString(R.string.pref_key_walketh), 0));
+				}
+			}
 			
 			manqalaCombatVari.restart();
 			
@@ -50,4 +62,5 @@ public class PlayerRestartRendererQueueListener implements IGLumpSVRendererQueue
 	private ManqalaCombatVari manqalaCombatVari;
 	private PlayerRendererQueueListener playerRendererQueueListener;
 	private MonsterRendererQueueListener monsterRendererQueueListener;
+	private ManqalaCombatVariActivity activity;
 }

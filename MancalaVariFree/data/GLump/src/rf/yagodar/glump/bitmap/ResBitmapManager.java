@@ -30,11 +30,20 @@ public class ResBitmapManager {
 		
 		return bitmapIdByDrawableResId.get(drawableResId);
 	}
-		
+	
+	public boolean isLoaded() {
+		return isLoaded;
+	}
+	
+	public void setLoaded(boolean isLoaded) {
+		this.isLoaded = isLoaded;
+	}
+	
 	protected ResBitmapManager() {
 		super();
 		bitmapIdByDrawableResId = new SparseIntArray();
 		dummyBitmapId = generateDummyBitmap();
+		isLoaded = false;
 	}
 	
 	protected int generateDummyBitmap() {
@@ -57,6 +66,7 @@ public class ResBitmapManager {
 	
 	private SparseIntArray bitmapIdByDrawableResId;
 	private int dummyBitmapId;
+	private boolean isLoaded;
 	
 	private static ResBitmapManager INSTANCE;
 }

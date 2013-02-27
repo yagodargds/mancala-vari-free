@@ -24,9 +24,8 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 		((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
 
 		setEGLConfigChooser(false);
-		renderer = new GLumpSVRenderer();
-		setRenderer(renderer);
-		setRenderMode(glSurfaceViewRenderMode);
+		renderer = GLumpSVRenderer.getInstance();
+		this.glSurfaceViewRenderMode = glSurfaceViewRenderMode;
 		
 		rendererListeners = new ArrayList<IGLumpSVRendererQueueListener>();
 	}
@@ -41,6 +40,11 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 	
 	public GLumpSV(Context context) {
 		this(context, 0.0f, GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+	}
+	
+	public void setRenderer() {
+		setRenderer(renderer);
+		setRenderMode(glSurfaceViewRenderMode);
 	}
 	
 	public void requestAdditionalRender(GLumpSVRendererQueue rendererQueue) {
@@ -138,9 +142,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 	
 	private <V extends AbstractPolygon> void registerSVRootModel(GLumpSVModel<V> sVRootModel) {
 		if(sVRootModel != null && sVRootModel.isRootModel()) {
-			if(sVBlank != null) {
-				renderer.removeAllPolygons(sVBlank.getSVRootModel().getPolygons(true));
-			}
+			renderer.clearPolygons();
 			
 			sVRootModel.setSurfaceView(this);
 			renderer.addAllPolygons(sVRootModel.getPolygons(true));
@@ -202,7 +204,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 					rendererQueue.onRendered();
 				}
 			}
-			catch (InterruptedException e) {
+			catch (Exception e) {
 				rendererQueue.onInterrupted();
 			}
 		}
@@ -228,6 +230,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 	private Thread mainRenderThread;
 	private RenderConveyor additionalRenderConveyor;
 	private Thread additionalRenderThread;
+	private final int glSurfaceViewRenderMode;
 	
 	public static final long ANIMATION_STEP_MILISEC = 30L;
 }

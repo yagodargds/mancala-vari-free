@@ -1,17 +1,15 @@
 package rf.yagodar.manqala.free.drawing.listener;
 
-import rf.yagodar.glump.renderer.GLumpSVRendererQueue;
 import rf.yagodar.glump.renderer.IGLumpSVRendererQueueListener;
+import rf.yagodar.manqala.free.activity.ManqalaCombatVariActivity;
 import rf.yagodar.manqala.free.database.ManqalaCharactersDBManager;
-import rf.yagodar.manqala.free.drawing.view.ManqalaCombatVariSV;
 import rf.yagodar.manqala.free.logic.combat.ManqalaCombatVari;
 
 public class PlayerRendererQueueListener implements IGLumpSVRendererQueueListener {
-	public PlayerRendererQueueListener(ManqalaCombatVari manqalaCombatVari, PlayerPauseRendererQueueListener playerPauseRendererQueueListener, ManqalaCombatVariSV manqalaCombatVariSV) {
+	public PlayerRendererQueueListener(ManqalaCombatVariActivity activity, ManqalaCombatVari manqalaCombatVari) {
 		setAllowTouchEvent(false);
+		this.activity = activity;
 		this.manqalaCombatVari = manqalaCombatVari;
-		this.playerPauseRendererQueueListener = playerPauseRendererQueueListener;
-		this.manqalaCombatVariSV = manqalaCombatVariSV;
 	}
 	
 	@Override
@@ -23,16 +21,9 @@ public class PlayerRendererQueueListener implements IGLumpSVRendererQueueListene
 				ManqalaCharactersDBManager.getInstance().incMasterCompanyState();
 			}
 			
-			playerPauseRendererQueueListener.setAllowTouchEvent(false);
-
-			manqalaCombatVariSV.pauseMainRender();
-
-			GLumpSVRendererQueue rendererQueue = new GLumpSVRendererQueue();
-
-			rendererQueue.addListener(playerPauseRendererQueueListener);
-			rendererQueue.offerAllNodes(manqalaCombatVariSV.showGameOverPlate(manqalaCombatVari));
-
-			manqalaCombatVariSV.requestAdditionalRender(rendererQueue);
+			if(activity != null) {
+				activity.showPausePlate();
+			}
 		}
 	}
 	
@@ -47,8 +38,7 @@ public class PlayerRendererQueueListener implements IGLumpSVRendererQueueListene
 		return allowTouchEvent;
 	}
 
+	private ManqalaCombatVariActivity activity;
 	private boolean allowTouchEvent;
 	private ManqalaCombatVari manqalaCombatVari;
-	private PlayerPauseRendererQueueListener playerPauseRendererQueueListener;
-	private ManqalaCombatVariSV manqalaCombatVariSV;
 }

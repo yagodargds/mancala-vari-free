@@ -146,7 +146,9 @@ public class GLumpSVModel<T extends AbstractPolygon> {
 	}
 
 	public ArrayList<GLumpSVModel<?>> getChildModels() {
-		return childModels;
+		synchronized (childModels) {
+			return childModels;
+		}
 	}
 	
 	public boolean isRootModel() {

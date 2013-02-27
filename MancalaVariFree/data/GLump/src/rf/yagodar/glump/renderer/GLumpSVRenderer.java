@@ -16,8 +16,12 @@ import android.opengl.GLU;
 import android.opengl.GLUtils;
 
 public class GLumpSVRenderer implements Renderer {
-	public GLumpSVRenderer() {
-		polygons = new ArrayList<AbstractPolygon>();
+	public static GLumpSVRenderer getInstance() {
+		if(INSTANCE == null) {
+			INSTANCE = new GLumpSVRenderer();
+		}
+		
+		return INSTANCE;
 	}
 	
 	//Вызывается, когда создана новая поверхность для представления
@@ -253,6 +257,10 @@ public class GLumpSVRenderer implements Renderer {
 		GLUtils.texImage2D(GL10.GL_TEXTURE_2D, 0, bitmap, 0);
 	}
 	
+	private GLumpSVRenderer() {
+		polygons = new ArrayList<AbstractPolygon>();
+	}
+	
 	private ArrayList<AbstractPolygon> polygons;
 	
 	private final static int BYTE_UNPACK_ALIGMENT = 1;
@@ -272,4 +280,6 @@ public class GLumpSVRenderer implements Renderer {
 	private final static float LOOK_AT_UP_X = 0.0f;
 	private final static float LOOK_AT_UP_Y = 1.0f;
 	private final static float LOOK_AT_UP_Z = 0.0f;
+	
+	private static GLumpSVRenderer INSTANCE = null;
 }

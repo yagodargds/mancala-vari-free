@@ -46,6 +46,11 @@ public class TextureInfo {
 	public float getAspectRatio() {
 		return aspectRatio;
 	}
+	
+	@Override
+	public String toString() {
+		return TextureInfo.class.getSimpleName() + ": texId[" + texId + "]" + "; leftS[" + leftS + "]" + "; topT[" + topT + "]" + "; rightS[" + rightS + "]" + "; bottomT[" + bottomT + "]";
+	}
 
 	private final int texId;
 	private final float leftS;

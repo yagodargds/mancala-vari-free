@@ -6,7 +6,6 @@ import rf.yagodar.manqala.free.R;
 import rf.yagodar.manqala.free.database.DBProvider;
 import rf.yagodar.manqala.free.database.ManqalaCharactersDBManager;
 import rf.yagodar.manqala.free.database.ManqalaCombatVariDBManager;
-import rf.yagodar.manqala.free.drawing.view.ManqalaCombatVariSVBuilder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,6 +24,7 @@ public class ManqalaMainMenuActivity extends Activity {
 		switch(target.getId()) {
 		case R.id.btn_mm_continue:
 			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_start_new_combat), false);
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
 		case R.id.btn_mm_company:
@@ -42,6 +42,7 @@ public class ManqalaMainMenuActivity extends Activity {
 			sharedPrefsEditor.putString(getString(R.string.pref_key_second_name), getString(R.string.master_player_name));
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_s_v_key), R.array.csv_air);
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), 0);
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
 		case R.id.btn_mm_multiplayer:
@@ -57,13 +58,14 @@ public class ManqalaMainMenuActivity extends Activity {
 			startActivity(new Intent(this, ManqalaCreditsActivity.class));
 			break;
 		case R.id.btn_mm_exit:
-			finish();
 			break;
 		default:
 			break;
 		}
 		
 		sharedPrefsEditor.commit();
+		
+		onBackPressed();
 	}
 	
 	@Override
@@ -95,10 +97,23 @@ public class ManqalaMainMenuActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);		
-				
+		
 		loadResources();
 		
 		setContentView(R.layout.main_menu);
+
+
+		if(ManqalaActivityManager.getInstance().isCombatActivityExists()) {
+			SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE);
+			if(!sharedPref.getAll().isEmpty() && sharedPref.contains(getString(R.string.pref_key_combat_paused)) && sharedPref.getBoolean(getString(R.string.pref_key_combat_paused), false)) {
+				onBackPressed();
+			}
+		}
+		else {
+			Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
+			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
+			sharedPrefsEditor.commit();
+		}
 	}
 	
 	@Override
@@ -118,18 +133,19 @@ public class ManqalaMainMenuActivity extends Activity {
 		DBProvider.createNewInstance(this);
 		
 		loadTextures();
-		
-		loadBlankSVs();
 	}
 	
 	private void loadTextures() {
-		TypedArray textures = getResources().obtainTypedArray(R.array.textures_to_load);
-		int drawableResId;
-		for(int i = 0; i < textures.length(); i++) {
-			drawableResId = textures.getResourceId(i, 0);
-			ResBitmapManager.getInstance().addToBitmapProvider(drawableResId, BitmapFactory.decodeResource(getResources(), drawableResId));
+		if(!ResBitmapManager.getInstance().isLoaded()) {
+			TypedArray textures = getResources().obtainTypedArray(R.array.textures_to_load);
+			int drawableResId;
+			for(int i = 0; i < textures.length(); i++) {
+				drawableResId = textures.getResourceId(i, 0);
+				ResBitmapManager.getInstance().addToBitmapProvider(drawableResId, BitmapFactory.decodeResource(getResources(), drawableResId));
+			}
+			textures.recycle();
+			ResBitmapManager.getInstance().setLoaded(true);
 		}
-		textures.recycle();
 	}
 	
 	private void loadSoundtrack() {
@@ -146,11 +162,5 @@ public class ManqalaMainMenuActivity extends Activity {
 			
 			ManqalaMediaPlayer.getInstance().play(this);
 		}
-	}
-	
-	private void loadBlankSVs() {
-		ManqalaCombatVariSVBuilder.getInstance().buildSV(this, R.array.csv_air);
-		ManqalaCombatVariSVBuilder.getInstance().buildSV(this, R.array.csv_earth);
-		ManqalaCombatVariSVBuilder.getInstance().buildSV(this, R.array.csv_fire);
 	}
 }
