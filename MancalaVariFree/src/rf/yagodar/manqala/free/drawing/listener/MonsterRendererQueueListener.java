@@ -2,6 +2,7 @@ package rf.yagodar.manqala.free.drawing.listener;
 
 import rf.yagodar.glump.renderer.GLumpSVRendererQueue;
 import rf.yagodar.glump.renderer.IGLumpSVRendererQueueListener;
+import rf.yagodar.manqala.free.database.ManqalaCharactersDBManager;
 import rf.yagodar.manqala.free.drawing.view.ManqalaCombatVariSV;
 import rf.yagodar.manqala.free.logic.combat.ManqalaCombatVari;
 import rf.yagodar.manqala.free.logic.combat.ManqalaMoveResult;
@@ -22,7 +23,11 @@ public class MonsterRendererQueueListener implements IGLumpSVRendererQueueListen
 	@Override
 	public void onRendered() {
 		if(manqalaCombatVari != null) {
-			if(!manqalaCombatVari.isCombating() && playerPauseRendererQueueListener != null) {
+			if(moveResult == null && !isInterrupted && !manqalaCombatVari.isCombating() && playerPauseRendererQueueListener != null) {
+				if(manqalaCombatVari.getCompanyState() >= 0 && !manqalaCombatVari.isDraw() && manqalaCombatVari.getWinner().getCharName().equals(ManqalaCharactersDBManager.getInstance().getMasterName()) && ManqalaCharactersDBManager.getInstance().getMasterCompanyState() == manqalaCombatVari.getCompanyState()) {
+					ManqalaCharactersDBManager.getInstance().incMasterCompanyState();
+				}
+				
 				playerPauseRendererQueueListener.setAllowTouchEvent(false);
 
 				manqalaCombatVariSV.pauseMainRender();
@@ -35,7 +40,7 @@ public class MonsterRendererQueueListener implements IGLumpSVRendererQueueListen
 				manqalaCombatVariSV.requestAdditionalRender(rendererQueue);
 			}
 			else if(monster != null && playerRendererQueueListener != null && manqalaCombatVariSV != null) {
-				if(moveResult == null && !isMoveResultErr) {
+				if(isInterrupted || (moveResult == null && !isMoveResultErr)) {
 					GLumpSVRendererQueue lFrendererQueue = manqalaCombatVariSV.drawMonsterThink();
 					lFrendererQueue.addListener(this);
 
@@ -46,8 +51,10 @@ public class MonsterRendererQueueListener implements IGLumpSVRendererQueueListen
 					if(moveResult == null) {
 						isMoveResultErr = true;
 					}
+					
+					isInterrupted = false;
 				}
-				else if(moveResult != null && !isMoveResultErr) {
+				else if(!isInterrupted && moveResult != null && !isMoveResultErr) {
 					GLumpSVRendererQueue monsterMoveRendererQueue = new GLumpSVRendererQueue();
 
 					monsterMoveRendererQueue.addListener(playerRendererQueueListener);
@@ -69,6 +76,12 @@ public class MonsterRendererQueueListener implements IGLumpSVRendererQueueListen
 		}
 	}
 
+	@Override
+	public void onInterrupted() {
+		moveResult = null;
+		isInterrupted = true;
+	}
+	
 	private ManqalaMonster monster;
 	private ManqalaCombatVari manqalaCombatVari;
 	private ManqalaCombatVariSV manqalaCombatVariSV;
@@ -76,4 +89,5 @@ public class MonsterRendererQueueListener implements IGLumpSVRendererQueueListen
 	private PlayerPauseRendererQueueListener playerPauseRendererQueueListener;
 	private ManqalaMoveResult moveResult;
 	private boolean isMoveResultErr;
+	private boolean isInterrupted;
 }

@@ -79,6 +79,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 		if(mainRenderThread != null) {
 			mainRenderThread.interrupt();
 			mainRenderThread = null;
+			
 		}
 	}
 	
@@ -201,7 +202,9 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 					rendererQueue.onRendered();
 				}
 			}
-			catch (InterruptedException e) {}
+			catch (InterruptedException e) {
+				rendererQueue.onInterrupted();
+			}
 		}
 		
 		public void setPaused(boolean isPaused) {

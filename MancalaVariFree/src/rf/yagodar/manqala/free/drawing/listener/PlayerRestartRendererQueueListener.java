@@ -34,13 +34,16 @@ public class PlayerRestartRendererQueueListener implements IGLumpSVRendererQueue
 				rendererQueue.addListener(monsterRendererQueueListener);
 			}
 
-			rendererQueue.offerAllNodes(manqalaCombatVariSV.drawInitSV(manqalaCombatVari));
-			
 			rendererQueue.offerAllNodes(manqalaCombatVariSV.hidePausePlate());
+			
+			rendererQueue.offerAllNodes(manqalaCombatVariSV.drawInitSV(manqalaCombatVari));
 
 			manqalaCombatVariSV.requestMainRender(rendererQueue);
 		}
 	}
+	
+	@Override
+	public void onInterrupted() {}
 
 	private ManqalaCombatVariSV manqalaCombatVariSV;
 	private PlayerPauseRendererQueueListener playerPauseRendererQueueListener;

@@ -15,5 +15,8 @@ public class PlayerContinueRendererQueueListener implements IGLumpSVRendererQueu
 		}
 	}
 
+	@Override
+	public void onInterrupted() {}
+	
 	private ManqalaCombatVariSV manqalaCombatVariSV;
 }

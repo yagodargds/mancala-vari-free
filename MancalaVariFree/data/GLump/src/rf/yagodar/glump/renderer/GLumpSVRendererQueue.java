@@ -59,18 +59,32 @@ public class GLumpSVRendererQueue {
 	}
 	
 	public void clearListeners() {
+		synchronized (listeners) {
 		listeners.clear();
+		}
 	}
 	
 	public void addListener(IGLumpSVRendererQueueListener listener) {
 		if(listener != null) {
-			listeners.add(listener);
+			synchronized (listeners) {
+				listeners.add(listener);
+			}
 		}
 	}
 	
 	public void onRendered() {
-		for (IGLumpSVRendererQueueListener listener : listeners) {
-			listener.onRendered();
+		synchronized (listeners) {
+			for (IGLumpSVRendererQueueListener listener : listeners) {
+				listener.onRendered();
+			}
+		}
+	}
+	
+	public void onInterrupted() {
+		synchronized (listeners) {
+			for (IGLumpSVRendererQueueListener listener : listeners) {
+				listener.onInterrupted();
+			}
 		}
 	}
 	

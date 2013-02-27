@@ -12,6 +12,9 @@ public class PlayerPauseRendererQueueListener implements IGLumpSVRendererQueueLi
 		setAllowTouchEvent(true);
 	}
 	
+	@Override
+	public void onInterrupted() {}
+	
 	public void setAllowTouchEvent(boolean allowTouchEvent) {
 		this.allowTouchEvent = allowTouchEvent;
 	}

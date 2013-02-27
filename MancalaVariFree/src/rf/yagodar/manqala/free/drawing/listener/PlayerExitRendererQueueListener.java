@@ -15,5 +15,8 @@ public class PlayerExitRendererQueueListener implements	IGLumpSVRendererQueueLis
 		}
 	}
 	
+	@Override
+	public void onInterrupted() {}
+	
 	private ManqalaCombatVariActivity activity;
 }
