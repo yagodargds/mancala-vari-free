@@ -16,7 +16,6 @@ public class ManqalaOptionsActivity extends Activity {
 		switch(target.getId()) {
 		case R.id.btn_o_back:
 			onBackPressed();
-			finish();
 			break;
 		case R.id.btn_o_toogle_music:
 			ToggleButton toogleBtnMusic = (ToggleButton) findViewById(R.id.btn_o_toogle_music);
@@ -42,6 +41,7 @@ public class ManqalaOptionsActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
 	}
 	
 	@Override

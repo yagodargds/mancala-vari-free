@@ -18,13 +18,12 @@ public class ManqalaTutorialActivity extends Activity {
 		default:
 			break;
 		}
-
-		finish();
 	}
 	
 	@Override
 	public void onBackPressed() {
 		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
 	}
 	
 	@Override
