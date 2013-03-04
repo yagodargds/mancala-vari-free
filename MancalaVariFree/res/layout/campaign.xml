@@ -20,7 +20,7 @@
         android:layout_height="1dp"
         android:layout_weight="0.133"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/btn_mm_company_label" />
+        android:text="@string/btn_mm_campaign_label" />
     
     <LinearLayout
         android:layout_width="fill_parent"

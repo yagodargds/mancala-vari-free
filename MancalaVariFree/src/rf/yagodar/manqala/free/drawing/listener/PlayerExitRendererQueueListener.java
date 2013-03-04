@@ -2,8 +2,8 @@ package rf.yagodar.manqala.free.drawing.listener;
 
 import rf.yagodar.glump.renderer.IGLumpSVRendererQueueListener;
 import rf.yagodar.manqala.free.R;
+import rf.yagodar.manqala.free.activity.ManqalaCampaignActivity;
 import rf.yagodar.manqala.free.activity.ManqalaCombatVariActivity;
-import rf.yagodar.manqala.free.activity.ManqalaCompanyActivity;
 import rf.yagodar.manqala.free.activity.ManqalaMainMenuActivity;
 import rf.yagodar.manqala.free.logic.combat.ManqalaCombatVari;
 import android.content.Context;
@@ -22,7 +22,7 @@ public class PlayerExitRendererQueueListener implements	IGLumpSVRendererQueueLis
 			activity.finish();
 			
 			if(manqalaCombatVari != null && manqalaCombatVari.getCompanyState() != -1) {
-				activity.startActivity(new Intent(activity, ManqalaCompanyActivity.class));	
+				activity.startActivity(new Intent(activity, ManqalaCampaignActivity.class));	
 			}
 			else {
 				activity.startActivity(new Intent(activity, ManqalaMainMenuActivity.class));

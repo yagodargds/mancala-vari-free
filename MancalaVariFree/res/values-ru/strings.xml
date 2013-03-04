@@ -2,8 +2,8 @@
 <resources>
     <string name="admob_publisher_id">a1512b697c2fc09</string>
     
-    <string name="app_name">MancalaVari</string>
-    <string name="version_name">v.1.0.3.3_28.Feb.13</string>
+    <string name="app_name">Mancala Vari Free</string>
+    <string name="version_name">v.1.0.3.5</string>
     
     <string name="air_label">Воздух</string>
     <string name="earth_label">Земля</string>
@@ -15,7 +15,7 @@
     <string name="enter_name_err_empty_label">Имя не может быть пустым!</string>
     
     <string name="btn_mm_continue_label">Продолжить</string>
-    <string name="btn_mm_company_label">Компания</string>
+    <string name="btn_mm_campaign_label">Кампания</string>
     <string name="btn_mm_fastgame_label">Быстрая игра</string>
     <string name="btn_mm_multiplayer_label">Мультиплеер</string>
     <string name="btn_mm_tutorial_label">Обучение</string>
@@ -54,8 +54,12 @@
 		Если последнее правило выполнить невозможно, то игра заканчивается. Выигрывает игрок, сохранивший большее количество зёрен. При равном количестве сохранённых зёрен партия считается ничейной.
 	</string>
 	
-    <string name="btn_o_toogle_music_on_label">Музыка ON</string>
-    <string name="btn_o_toogle_music_off_label">Музыка OFF</string>
+    <string name="chbx_o_music_label">Музыка</string>
+	<string name="chbx_o_music_on_label">вкл.</string>
+	<string name="rg_o_anim_speed_label">Скорость анимации</string>
+	<string name="rb_o_anim_speed_slow_label">0.5x</string>
+	<string name="rb_o_anim_speed_medium_label">1x</string>
+	<string name="rb_o_anim_speed_fast_label">2.5x</string>
     
     <string name="credits_text_1">Программист</string>
     <string name="credits_text_2">Андрей Ягодаров</string>

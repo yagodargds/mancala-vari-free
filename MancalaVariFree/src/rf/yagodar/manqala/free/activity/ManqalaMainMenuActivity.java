@@ -27,12 +27,12 @@ public class ManqalaMainMenuActivity extends Activity {
 			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
 			break;
-		case R.id.btn_mm_company:
+		case R.id.btn_mm_campaign:
 			if(ManqalaCharactersDBManager.getInstance().getMaster() == null) {
-				startActivity(new Intent(this, ManqalaCompanyWellcomeActivity.class));
+				startActivity(new Intent(this, ManqalaCampaignWellcomeActivity.class));
 			}
 			else {
-				startActivity(new Intent(this, ManqalaCompanyActivity.class));
+				startActivity(new Intent(this, ManqalaCampaignActivity.class));
 			}
 			break;
 		case R.id.btn_mm_fastgame:

@@ -5,16 +5,16 @@ import android.util.Log;
 import android.util.SparseArray;
 
 public abstract class AbstractHomogenAnimScen<T> extends AbstractAnimScen {
-	public AbstractHomogenAnimScen(T[] nodes, long animationTime) {
-		this(nodes, null, animationTime);
+	public AbstractHomogenAnimScen(T[] nodes, long animatonStep, long animationTime) {
+		this(nodes, null, animatonStep, animationTime);
 	}
 	
-	public AbstractHomogenAnimScen(T[] nodes, AbstractPolygon parentPolygon, long animationTime) {
-		super(parentPolygon, animationTime, false);
+	public AbstractHomogenAnimScen(T[] nodes, AbstractPolygon parentPolygon, long animatonStep, long animationTime) {
+		super(parentPolygon, animatonStep, animationTime, false);
 
 		this.nodes = nodes;
 		if(this.nodes != null) {
-			if(!writeAnimations(animationTime)) {
+			if(!writeAnimations(animatonStep, animationTime)) {
 				setAnimations(null);
 				Log.e(LOG_TAG, "Error writing animations! [animationTime:(" + animationTime + ")]!");
 			}
@@ -25,7 +25,7 @@ public abstract class AbstractHomogenAnimScen<T> extends AbstractAnimScen {
 	}
 	
 	@Override
-	protected boolean writeAnimations(long animationTime) {
+	protected boolean writeAnimations(long animatonStep, long animationTime) {
 		if(getNodes() != null && getNodes().length > 1) {
 			float nodeLenght;
 			float nodesLenght = 0.0f;
@@ -40,7 +40,7 @@ public abstract class AbstractHomogenAnimScen<T> extends AbstractAnimScen {
 			}
 
 			for (int i = 0; i < getNodes().length - 1; i++) {
-				addAnimation(createAnim(getNodes()[i], getNodes()[i + 1], (long) Math.floor((double) animationTime * ((double) nodeLenghts.get(i) / (double) nodesLenght ))));
+				addAnimation(createAnim(getNodes()[i], getNodes()[i + 1], animatonStep, (long) Math.floor((double) animationTime * ((double) nodeLenghts.get(i) / (double) nodesLenght ))));
 			}
 			
 			return true;
@@ -51,7 +51,7 @@ public abstract class AbstractHomogenAnimScen<T> extends AbstractAnimScen {
 	
 	abstract protected float calcLenght(T start, T dest);
 	
-	abstract protected AbstractAnim<T> createAnim(T start, T dest, long animationTime);
+	abstract protected AbstractAnim<T> createAnim(T start, T dest, long animatonStep, long animationTime);
 	
 	protected T[] getNodes() {
 		return nodes;

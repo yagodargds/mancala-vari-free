@@ -1,8 +1,8 @@
 <resources>
     <string name="admob_publisher_id">a1512b697c2fc09</string>
     
-    <string name="app_name">MancalaVari</string>
-    <string name="version_name">v.1.0.3.3_28.Feb.13</string>
+    <string name="app_name">Mancala Vari Free</string>
+    <string name="version_name">v.1.0.3.5</string>
     
     <string name="air_label">Air</string>
     <string name="earth_label">Earth</string>
@@ -14,7 +14,7 @@
     <string name="enter_name_err_empty_label">The name can not be empty!</string>
     
     <string name="btn_mm_continue_label">Continue</string>
-    <string name="btn_mm_company_label">Company</string>
+    <string name="btn_mm_campaign_label">Сampaign</string>
     <string name="btn_mm_fastgame_label">Fast game</string>
     <string name="btn_mm_multiplayer_label">Multiplayer</string>
     <string name="btn_mm_tutorial_label">How to play</string>
@@ -53,8 +53,12 @@
 		If the final rule is not possible, the game ends. Wins player, which has retained more of the grains. With an equal amount of stored grains party is considered a draw.
 	</string>
 	
-    <string name="btn_o_toogle_music_on_label">Music ON</string>
-    <string name="btn_o_toogle_music_off_label">Music OFF</string>
+    <string name="chbx_o_music_label">Music</string>
+	<string name="chbx_o_music_on_label">on</string>
+	<string name="rg_o_anim_speed_label">Animation speed</string>
+	<string name="rb_o_anim_speed_slow_label">0.5x</string>
+	<string name="rb_o_anim_speed_medium_label">1x</string>
+	<string name="rb_o_anim_speed_fast_label">2.5x</string>
     
     <string name="credits_text_1">Programmer</string>
     <string name="credits_text_2">Andrey Yagodarov</string>

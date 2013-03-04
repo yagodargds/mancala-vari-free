@@ -9,20 +9,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ToggleButton;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
 
 public class ManqalaOptionsActivity extends Activity {
 	public void onClickHandler(View target) {
+		Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
+		
 		switch(target.getId()) {
 		case R.id.btn_o_back:
 			onBackPressed();
-			finish();
 			break;
-		case R.id.btn_o_toogle_music:
-			ToggleButton toogleBtnMusic = (ToggleButton) findViewById(R.id.btn_o_toogle_music);
-			
-			Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
-			if(toogleBtnMusic.isChecked()) {
+		case R.id.chbx_o_music:
+			CheckBox checkBoxMusic = (CheckBox) findViewById(R.id.chbx_o_music);
+			if(checkBoxMusic != null && checkBoxMusic.isChecked()) {
 				sharedPrefsEditor.putBoolean(getString(R.string.pref_key_toogle_music), true);
 				ManqalaMediaPlayer.getInstance().play(this);
 			}
@@ -30,18 +30,26 @@ public class ManqalaOptionsActivity extends Activity {
 				sharedPrefsEditor.putBoolean(getString(R.string.pref_key_toogle_music), false);
 				ManqalaMediaPlayer.getInstance().pause();
 			}
-			
-			sharedPrefsEditor.commit();
-			
+			break;
+		case R.id.rb_o_anim_speed_slow:
+		case R.id.rb_o_anim_speed_medium:
+		case R.id.rb_o_anim_speed_fast:
+			RadioGroup radioGroupAnimSpeed = (RadioGroup) findViewById(R.id.rg_o_anim_speed);
+			if(radioGroupAnimSpeed != null) {
+				sharedPrefsEditor.putInt(getString(R.string.pref_key_anim_speed_rg_rb_id), radioGroupAnimSpeed.getCheckedRadioButtonId());
+			}
 			break;
 		default:
 			break;
 		}
+		
+		sharedPrefsEditor.commit();
 	}
 	
 	@Override
 	public void onBackPressed() {
 		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
 	}
 	
 	@Override
@@ -54,16 +62,32 @@ public class ManqalaOptionsActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		
-		ToggleButton toogleBtnMusic = (ToggleButton) findViewById(R.id.btn_o_toogle_music);
-		
 		SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE);
-		if(!sharedPref.getAll().isEmpty() && sharedPref.contains(getString(R.string.pref_key_toogle_music))) {
-			if(sharedPref.getBoolean(getString(R.string.pref_key_toogle_music), true)) {
-				ManqalaMediaPlayer.getInstance().resume();
-				toogleBtnMusic.setChecked(true);
+		
+		CheckBox checkBoxMusic = (CheckBox) findViewById(R.id.chbx_o_music);
+		if(checkBoxMusic != null) {
+			if(!sharedPref.getAll().isEmpty() && sharedPref.contains(getString(R.string.pref_key_toogle_music))) {
+				if(sharedPref.getBoolean(getString(R.string.pref_key_toogle_music), true)) {
+					ManqalaMediaPlayer.getInstance().resume();
+					checkBoxMusic.setChecked(true);
+				}
+				else {
+					checkBoxMusic.setChecked(false);
+				}
 			}
 			else {
-				toogleBtnMusic.setChecked(false);
+				checkBoxMusic.setChecked(false);
+			}
+		}
+		
+		RadioGroup radioGroupAnimSpeed = (RadioGroup) findViewById(R.id.rg_o_anim_speed);
+		if(radioGroupAnimSpeed != null) {
+			radioGroupAnimSpeed.clearCheck();
+			if(!sharedPref.getAll().isEmpty() && sharedPref.contains(getString(R.string.pref_key_anim_speed_rg_rb_id))) {
+				radioGroupAnimSpeed.check(sharedPref.getInt(getString(R.string.pref_key_anim_speed_rg_rb_id), R.id.rb_o_anim_speed_medium));
+			}
+			else {
+				radioGroupAnimSpeed.check(R.id.rb_o_anim_speed_medium);
 			}
 		}
 	}

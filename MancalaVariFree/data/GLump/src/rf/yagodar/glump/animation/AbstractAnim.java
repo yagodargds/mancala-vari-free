@@ -1,14 +1,13 @@
 package rf.yagodar.glump.animation;
 
 import rf.yagodar.glump.polygon.AbstractPolygon;
-import rf.yagodar.glump.view.GLumpSV;
 import android.util.Log;
 
 public abstract class AbstractAnim<T> implements Cloneable {
-	public AbstractAnim(T start, T dest, long animationTime) {
+	public AbstractAnim(T start, T dest, long animatonStep, long animationTime) {
 		if(start != null && dest != null && checkAttrs(start, dest)) {
 			stepIndx = 0;
-			steps = calcSteps(start, dest, animationTime < GLumpSV.ANIMATION_STEP_MILISEC ? GLumpSV.ANIMATION_STEP_MILISEC : animationTime);
+			steps = calcSteps(start, dest, animatonStep, animationTime < animatonStep ? animatonStep : animationTime);
 		}
 		else {
 			steps = null;
@@ -56,7 +55,7 @@ public abstract class AbstractAnim<T> implements Cloneable {
 	
 	abstract protected boolean checkAttrs(T start, T dest);
 	
-	abstract protected T[] calcSteps(T start, T dest, long animationTime);
+	abstract protected T[] calcSteps(T start, T dest, long animatonStep, long animationTime);
 	
 	abstract protected void applyStep(AbstractPolygon polygon, T step);
 	

@@ -149,6 +149,9 @@ public class ManqalaCombatVariActivity extends Activity {
 			}
 
 			manqalaCombatVariSV = ManqalaCombatVariSVBuilder.getInstance().buildSV(this, manqalaCombatVari.getSVKey());
+			if(manqalaCombatVariSV != null) {
+				manqalaCombatVariSV.setAnimSpeed(sharedPref.getInt(getString(R.string.pref_key_anim_speed_rg_rb_id), R.id.rb_o_anim_speed_medium));
+			}
 		}
 		
 		if(manqalaCombatVariSV != null && manqalaCombatVari != null) {

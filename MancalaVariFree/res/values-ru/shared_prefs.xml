@@ -8,6 +8,7 @@
     <string name="pref_key_s_v_key">prefs_s_v_key</string>
     <string name="pref_key_walketh">prefs_walketh</string>
     <string name="pref_key_combat_paused">combat_paused</string>
+    <string name="pref_key_anim_speed_rg_rb_id">prefs_anim_speed_rg_rb_id</string>
     
     <string name="pref_key_toogle_music">toogle_music</string>
 </resources>

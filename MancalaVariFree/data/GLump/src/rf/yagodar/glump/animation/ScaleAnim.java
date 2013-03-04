@@ -1,15 +1,14 @@
 package rf.yagodar.glump.animation;
 
 import rf.yagodar.glump.polygon.AbstractPolygon;
-import rf.yagodar.glump.view.GLumpSV;
 
 public class ScaleAnim extends AbstractAnim<Float> {
-	public ScaleAnim(Float dest, long animationTime) {
-		this(1.0f, dest, animationTime);
+	public ScaleAnim(Float dest, long animatonStep, long animationTime) {
+		this(1.0f, dest, animatonStep, animationTime);
 	}
 	
-	public ScaleAnim(Float start, Float dest, long animationTime) {
-		super(start, dest, animationTime);
+	public ScaleAnim(Float start, Float dest, long animatonStep, long animationTime) {
+		super(start, dest, animatonStep, animationTime);
 	}
 
 	@Override
@@ -22,8 +21,8 @@ public class ScaleAnim extends AbstractAnim<Float> {
 	}
 	
 	@Override
-	protected Float[] calcSteps(Float start, Float dest, long animationTime) {
-		Float[] steps = new Float[(int) Math.floor((double) animationTime / (double) GLumpSV.ANIMATION_STEP_MILISEC)];
+	protected Float[] calcSteps(Float start, Float dest, long animatonStep, long animationTime) {
+		Float[] steps = new Float[(int) Math.floor((double) animationTime / (double) animatonStep)];
 		
 		float stepPart = (dest - start) / (float) steps.length;
 		for(int i = 0; i < steps.length; i++) {

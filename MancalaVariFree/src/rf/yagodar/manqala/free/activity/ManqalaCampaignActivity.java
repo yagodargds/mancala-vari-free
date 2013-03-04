@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ManqalaCompanyActivity extends Activity {
+public class ManqalaCampaignActivity extends Activity {
 	public void onClickHandler(View target) {
 		Editor sharedPrefsEditor = getApplicationContext().getSharedPreferences(getString(R.string.shared_prefs_file_name), Context.MODE_PRIVATE).edit();
 		
@@ -30,6 +30,7 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
 			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
+			finish();
 			break;
 		case R.id.btn_c_st_2:
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_company_state), ManqalaCharactersDBManager.getInstance().getMasterCompanyState());
@@ -40,6 +41,7 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
 			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
+			finish();
 			break;
 		case R.id.btn_c_st_3:
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_company_state), ManqalaCharactersDBManager.getInstance().getMasterCompanyState());
@@ -50,19 +52,19 @@ public class ManqalaCompanyActivity extends Activity {
 			sharedPrefsEditor.putInt(getString(R.string.pref_key_walketh), Opponent.FIRST.ordinal());
 			sharedPrefsEditor.putBoolean(getString(R.string.pref_key_combat_paused), false);
 			startActivity(new Intent(this, ManqalaCombatVariActivity.class));
+			finish();
 			break;
 		default:
 			break;
 		}
 		
 		sharedPrefsEditor.commit();
-		
-		finish();
 	}
 	
 	@Override
 	public void onBackPressed() {
 		startActivity(new Intent(this, ManqalaMainMenuActivity.class));
+		finish();
 	}
 	
 	@Override
@@ -107,6 +109,6 @@ public class ManqalaCompanyActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.company);
+		setContentView(R.layout.campaign);
 	}
 }

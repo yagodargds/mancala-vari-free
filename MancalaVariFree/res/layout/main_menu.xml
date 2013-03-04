@@ -58,7 +58,7 @@
             android:layout_weight="0.165" />
         
         <Button
-            android:id="@+id/btn_mm_company"
+            android:id="@+id/btn_mm_campaign"
             style="@style/ManqalaVariButtonTheme"
             android:onClick="onClickHandler"
             android:layout_width="1dp"
@@ -66,7 +66,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="0.33"
             android:gravity="center_vertical|center_horizontal"
-            android:text="@string/btn_mm_company_label" />
+            android:text="@string/btn_mm_campaign_label" />
         
         <Button
             android:id="@+id/btn_mm_fastgame"

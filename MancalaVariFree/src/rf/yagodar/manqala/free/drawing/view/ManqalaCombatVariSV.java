@@ -76,7 +76,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 	public GLumpSVRendererQueue drawMonsterThink() {
 		GLumpSVRendererQueueNode finishRendererQueueNode = new GLumpSVRendererQueueNode();
 		for (GLumpSVModel<?> lFModel : getSVBlank().getLoadingFramesModels()) {
-			finishRendererQueueNode.addAnimScenInfo(new AnimScenInfo(lFModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			finishRendererQueueNode.addAnimScenInfo(new AnimScenInfo(lFModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		}
 		
 		GLumpSVRendererQueue lFrendererQueue = new GLumpSVRendererQueue(true, finishRendererQueueNode);
@@ -92,8 +92,8 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 				prevIndx = i - 1;
 			}
 			
-			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getLoadingFramesModels().get(prevIndx), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getLoadingFramesModels().get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getLoadingFramesModels().get(prevIndx), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getLoadingFramesModels().get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			
 			lFrendererQueue.offerNode(rendererQueueNode);
 		}
@@ -128,20 +128,20 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		ArrayList<GLumpSVRendererQueueNode> rendererQueueNodes = new ArrayList<GLumpSVRendererQueueNode>();
 		
 		GLumpSVRendererQueueNode hidePausePlateNode = new GLumpSVRendererQueueNode();
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		hidePausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		
 		rendererQueueNodes.add(hidePausePlateNode);
 		
 		GLumpSVRendererQueueNode deselectPauseModelNode = new GLumpSVRendererQueueNode();
-		deselectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		deselectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		deselectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		deselectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		rendererQueueNodes.add(deselectPauseModelNode);
 		
 		rendererQueueNodes.add(showCPPIText());
@@ -209,10 +209,28 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		}
 	}
 	
+	public void setAnimSpeed(int rBtnId) {
+		AnimSpeed checkedAnimSpeed = null;
+		
+		for (AnimSpeed animSpeed : AnimSpeed.values()) {
+			if(animSpeed.getRBtnId() == rBtnId) {
+				checkedAnimSpeed = animSpeed;
+				break;
+			}
+		}
+		
+		if(checkedAnimSpeed != null) {
+			setAnimStepMilisec((long)((float)NORMAL_ANIM_STEP_MILISEC * checkedAnimSpeed.getAnimSpeedMod()));
+		}
+		else {
+			setAnimStepMilisec(NORMAL_ANIM_STEP_MILISEC);
+		}
+	}
+	
 	private GLumpSVRendererQueueNode drawButtonSelect(GLumpButtonModel button, String text, int textColor) {
 		GLumpSVRendererQueueNode renderQueueNode = new GLumpSVRendererQueueNode();
-		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		renderQueueNode.addModelEditInfo(button.getButtonSelectedModel().getTextModel().drawText(text, textColor));
 		
 		return renderQueueNode;
@@ -220,8 +238,8 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 	
 	private GLumpSVRendererQueueNode drawButtonDeselect(GLumpButtonModel button, String text, int textColor) {
 		GLumpSVRendererQueueNode renderQueueNode = new GLumpSVRendererQueueNode();
-		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+		renderQueueNode.addAnimScenInfo(new AnimScenInfo(button.getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		renderQueueNode.addModelEditInfo(button.getButtonDeselectedModel().getTextModel().drawText(text, textColor));
 		
 		return renderQueueNode;
@@ -240,7 +258,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 		
 		rendererQueueNode.addModelEditInfo(getSVBlank().getCombatInfoTextModel().drawText(getContext().getString(R.string.illegal_turn), getSVBlank().getCombatInfoErrorTextColor()));
-		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(ERR_MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), ERR_MSG_APPEAR_SCALE_ANIM_TIME)));
+		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(ERR_MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), getAnimStepMilisec(), ERR_MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 		
 		return rendererQueueNode;
 	}
@@ -270,7 +288,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		rendererQueueNode.addModelEditInfo(getSVBlank().getCombatInfoTextModel().drawText(msg, getSVBlank().getCombatInfoTextColor()));
 
 		if(addAnimScenInfo) {
-			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
+			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), getAnimStepMilisec(), MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 		}
 
 		return rendererQueueNode;
@@ -280,7 +298,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 		
 		for (GLumpSVModel<?> lFModel : getSVBlank().getLoadingFramesModels()) {
-			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(lFModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(lFModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		}
 		
 		return rendererQueueNode;
@@ -290,7 +308,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 		
 		for (ManqalaVariCellModel cellModel : getSVBlank().getGameBoardModel().getCellsModels()) {
-			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		}
 		
 		return rendererQueueNode;
@@ -316,7 +334,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 			modelEditInfos.add(cellPointsModel.drawText("" + newGrainsCount, getSVBlank().getGameBoardModel().getCellPointsTextColors()[colorIndex]));
 			
 			cellModel.initDelGrainModels();
-			animScenInfos.addAll(cellModel.animAddGrainModels(newGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC));
+			animScenInfos.addAll(cellModel.animAddGrainModels(newGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec()));
 			
 			cellModel.resetTranspGrainModelIndx();
 		}
@@ -350,36 +368,36 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 			if(moveResultStep.isBonus()) {
 				GLumpSVRendererQueueNode bonusTextRendererNode = new GLumpSVRendererQueueNode();
 				bonusTextRendererNode.addModelEditInfo(getSVBlank().getCombatInfoTextModel().drawText(getContext().getString(R.string.bonus), getSVBlank().getCombatInfoTextColor()));
-				bonusTextRendererNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
+				bonusTextRendererNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getCombatInfoTextModel(), HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, getSVBlank().getCombatInfoTextModel().getPolygon(), getAnimStepMilisec(), MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 				rendererQueueNodes.add(bonusTextRendererNode);
 
 				GLumpSVRendererQueueNode delBonusGrainsRendererNode = new GLumpSVRendererQueueNode();
 				int addToWarehouseGrainsCount = cellModel.getGrainsCount();
-				delBonusGrainsRendererNode.addAllAnimScenInfo(cellModel.animDelGrainModels(DISAPPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
+				delBonusGrainsRendererNode.addAllAnimScenInfo(cellModel.animDelGrainModels(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec()));
 				delBonusGrainsRendererNode.addModelEditInfo(cellPointsModel.drawText("" + cellModel.getGrainsCount(), getSVBlank().getGameBoardModel().getCellPointsTextColors()[colorIndex]));
-				delBonusGrainsRendererNode.addAnimScenInfo(new AnimScenInfo(cellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, cellPointsModel.getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
+				delBonusGrainsRendererNode.addAnimScenInfo(new AnimScenInfo(cellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, cellPointsModel.getPolygon(), getAnimStepMilisec(), MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 				rendererQueueNodes.add(delBonusGrainsRendererNode);
 
 				GLumpSVRendererQueueNode addBonusGrainsRendererNode = new GLumpSVRendererQueueNode();
 				
 				ManqalaVariCellModel warehouseCellModel = getSVBlank().getGameBoardModel().getCellsModels()[walkethWarehouseGlobalCellPosId];
 				GLumpSVModel<?> warehouseCellPointsModel = getSVBlank().getGameBoardModel().getCellsPointsModels()[walkethWarehouseGlobalCellPosId];
-				addBonusGrainsRendererNode.addAllAnimScenInfo(warehouseCellModel.animAddGrainModels(addToWarehouseGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
+				addBonusGrainsRendererNode.addAllAnimScenInfo(warehouseCellModel.animAddGrainModels(addToWarehouseGrainsCount, APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec()));
 				addBonusGrainsRendererNode.addModelEditInfo(warehouseCellPointsModel.drawText("" + warehouseCellModel.getGrainsCount(), getSVBlank().getGameBoardModel().getCellPointsTextColors()[warehouseColorIndex]));
-				addBonusGrainsRendererNode.addAnimScenInfo(new AnimScenInfo(warehouseCellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, warehouseCellPointsModel.getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
+				addBonusGrainsRendererNode.addAnimScenInfo(new AnimScenInfo(warehouseCellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, warehouseCellPointsModel.getPolygon(), getAnimStepMilisec(), MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 				rendererQueueNodes.add(addBonusGrainsRendererNode);
 			}
 			else {
 				GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 				if(moveResultStep.isStartCell()) {
-					rendererQueueNode.addAllAnimScenInfo(cellModel.animDelGrainModels(DISAPPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
+					rendererQueueNode.addAllAnimScenInfo(cellModel.animDelGrainModels(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec()));
 				}
 				else {
-					rendererQueueNode.addAnimScenInfo(cellModel.animIncGrainModel(APPEAR_TRANSPARENT_ANIM_NODES, GRAIN_TRANSPARENT_ANIM_TIME));
+					rendererQueueNode.addAnimScenInfo(cellModel.animIncGrainModel(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec()));
 				}
 				
 				rendererQueueNode.addModelEditInfo(cellPointsModel.drawText("" + cellModel.getGrainsCount(), getSVBlank().getGameBoardModel().getCellPointsTextColors()[colorIndex]));
-				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, cellPointsModel.getPolygon(), MSG_APPEAR_SCALE_ANIM_TIME)));
+				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellPointsModel, HomogenAnimScenBuilder.generateScaleAnimScen(MSG_APPEAR_SCALE_ANIM_NODES, cellPointsModel.getPolygon(), getAnimStepMilisec(), MSG_APPEAR_SCALE_ANIM_NODES.length * getAnimStepMilisec())));
 
 				rendererQueueNodes.add(rendererQueueNode);
 			}
@@ -395,7 +413,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 	private GLumpSVRendererQueueNode drawCellSelected(ManqalaVariCellModel cellModel) {
 		GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 		
-		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, CELL_SELECT_TRANSPARENT_ANIM_TIME)));
+		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), 2 * APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec())));
 		
 		return rendererQueueNode;
 	}
@@ -403,7 +421,7 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 	private GLumpSVRendererQueueNode drawCellDeselected(ManqalaVariCellModel cellModel) {
 		GLumpSVRendererQueueNode rendererQueueNode = new GLumpSVRendererQueueNode();
 		
-		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, CELL_SELECT_TRANSPARENT_ANIM_TIME)));
+		rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cellModel.getCellSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), 2 * APPEAR_TRANSPARENT_ANIM_NODES.length * getAnimStepMilisec())));
 		
 		return rendererQueueNode;
 	}
@@ -415,28 +433,28 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		
 		if(showContinueButton) {
 			GLumpSVRendererQueueNode selectPauseModelNode = new GLumpSVRendererQueueNode();
-			selectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
-			selectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			selectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
+			selectPauseModelNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPauseSelectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			rendererQueueNodes.add(selectPauseModelNode);
 		}
 
 		GLumpSVRendererQueueNode showPausePlateNode = new GLumpSVRendererQueueNode();
 
-		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		showPausePlateNode.addModelEditInfo(getSVBlank().getPausePlateModel().getpPTextLabelModel().getTextModel().drawText(pausePlateText, getSVBlank().getPausePlateModel().getpPTextColor()));
 		
-		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		showPausePlateNode.addModelEditInfo(getSVBlank().getPausePlateModel().getpPHeaderTextLabelModel().getTextModel().drawText(pausePlateHeaderText, getSVBlank().getPausePlateModel().getpPHeaderTextColor()));
 		
-		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		showPausePlateNode.addModelEditInfo(getSVBlank().getPausePlateModel().getpPRestartButton().getButtonDeselectedModel().getTextModel().drawText(getContext().getString(R.string.btn_c_restart_label), getSVBlank().getPausePlateModel().getpPBDTextColor()));
 		
 		if(showContinueButton) {
-			showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+			showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			showPausePlateNode.addModelEditInfo(getSVBlank().getPausePlateModel().getpPContinueButton().getButtonDeselectedModel().getTextModel().drawText(getContext().getString(R.string.btn_c_continue_label), getSVBlank().getPausePlateModel().getpPBDTextColor()));
 		}
 		
-		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+		showPausePlateNode.addAnimScenInfo(new AnimScenInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel(), HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 		showPausePlateNode.addModelEditInfo(getSVBlank().getPausePlateModel().getpPExitButton().getButtonDeselectedModel().getTextModel().drawText(getContext().getString(R.string.btn_c_exit_label), getSVBlank().getPausePlateModel().getpPBDTextColor()));
 		
 		rendererQueueNodes.add(showPausePlateNode);
@@ -449,13 +467,13 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		
 		if(getSVBlank().getGameBoardModel().getPlayerInfoTextModels() != null) {
 			for (GLumpSVModel<?> pITextModel : getSVBlank().getGameBoardModel().getPlayerInfoTextModels()) {
-				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(pITextModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(pITextModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			}
 		}
 		
 		if(getSVBlank().getGameBoardModel().getCellsPointsModels() != null) {
 			for (GLumpSVModel<?> cPModel : getSVBlank().getGameBoardModel().getCellsPointsModels()) {
-				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cPModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cPModel, HomogenAnimScenBuilder.generateTransparentAnimScen(DISAPPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			}
 		}
 		
@@ -467,29 +485,44 @@ public class ManqalaCombatVariSV extends GLumpSV<ManqalaCombatVariSVBlank> {
 		
 		if(getSVBlank().getGameBoardModel().getPlayerInfoTextModels() != null) {
 			for (GLumpSVModel<?> pITextModel : getSVBlank().getGameBoardModel().getPlayerInfoTextModels()) {
-				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(pITextModel, HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(pITextModel, HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			}
 		}
 		
 		if(getSVBlank().getGameBoardModel().getCellsPointsModels() != null) {
 			for (GLumpSVModel<?> cPModel : getSVBlank().getGameBoardModel().getCellsPointsModels()) {
-				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cPModel, HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, GLumpSV.ANIMATION_STEP_MILISEC)));
+				rendererQueueNode.addAnimScenInfo(new AnimScenInfo(cPModel, HomogenAnimScenBuilder.generateTransparentAnimScen(APPEAR_TRANSPARENT_ANIM_NODES, getAnimStepMilisec(), getAnimStepMilisec())));
 			}
 		}
 		
 		return rendererQueueNode;
 	}
 	
+	public enum AnimSpeed {
+		slow(2.0f, R.id.rb_o_anim_speed_slow),
+		medium(1.0f, R.id.rb_o_anim_speed_medium), 
+		fast(0.4f, R.id.rb_o_anim_speed_fast);
+		
+		private AnimSpeed(float animSpeedMod, int rBtnId) {
+			this.animSpeedMod = animSpeedMod;
+			this.rBtnId = rBtnId;
+		}
+		
+		public float getAnimSpeedMod() {
+			return animSpeedMod;
+		}
+		
+		public int getRBtnId() {
+			return rBtnId;
+		}
+		
+		private final float animSpeedMod;
+		private final int rBtnId;
+	}
+	
 	//TODO мб перенести осюда?
 	private static final Float[] MSG_APPEAR_SCALE_ANIM_NODES = new Float[] { 1.0f, 1.1f, 1.0f };
-	private static final long MSG_APPEAR_SCALE_ANIM_TIME = MSG_APPEAR_SCALE_ANIM_NODES.length * GLumpSV.ANIMATION_STEP_MILISEC;
 	private static final Float[] ERR_MSG_APPEAR_SCALE_ANIM_NODES = new Float[] { 1.0f, 1.1f, 1.0f };
-	private static final long ERR_MSG_APPEAR_SCALE_ANIM_TIME = ERR_MSG_APPEAR_SCALE_ANIM_NODES.length * GLumpSV.ANIMATION_STEP_MILISEC;
-	
 	private static final Float[] APPEAR_TRANSPARENT_ANIM_NODES = new Float[] { 0.0f, 1.0f };
 	private static final Float[] DISAPPEAR_TRANSPARENT_ANIM_NODES = new Float[] { 1.0f, 0.0f };
-	
-	private static final long CELL_SELECT_TRANSPARENT_ANIM_TIME = 2 * APPEAR_TRANSPARENT_ANIM_NODES.length * GLumpSV.ANIMATION_STEP_MILISEC;
-	
-	private static final long GRAIN_TRANSPARENT_ANIM_TIME = APPEAR_TRANSPARENT_ANIM_NODES.length * GLumpSV.ANIMATION_STEP_MILISEC;
 }

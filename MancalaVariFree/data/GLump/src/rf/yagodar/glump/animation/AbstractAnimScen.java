@@ -6,21 +6,21 @@ import rf.yagodar.glump.polygon.AbstractPolygon;
 import android.util.Log;
 
 public abstract class AbstractAnimScen implements Cloneable {
-	public AbstractAnimScen(long animationTime) {
-		this(null, animationTime);
+	public AbstractAnimScen(long animatonStep, long animationTime) {
+		this(null, animatonStep, animationTime);
 	}
 	
-	public AbstractAnimScen(AbstractPolygon parentPolygon, long animationTime) {
-		this(parentPolygon, animationTime, true);
+	public AbstractAnimScen(AbstractPolygon parentPolygon, long animatonStep, long animationTime) {
+		this(parentPolygon, animatonStep, animationTime, true);
 	}
 	
-	protected AbstractAnimScen(AbstractPolygon parentPolygon, long animationTime, boolean writeAimations) {
+	protected AbstractAnimScen(AbstractPolygon parentPolygon, long animatonStep, long animationTime, boolean writeAimations) {
 		setAnimations(new ArrayList<AbstractAnim<?>>());
 		animationIndx = 0;
 		this.parentPolygon = parentPolygon;
 		
 		if(writeAimations) {
-			if(!writeAnimations(animationTime)) {
+			if(!writeAnimations(animatonStep, animationTime)) {
 				setAnimations(null);
 				Log.e(LOG_TAG, "Error writing animations! [animationTime:(" + animationTime + ")]!");
 			}
@@ -76,7 +76,7 @@ public abstract class AbstractAnimScen implements Cloneable {
 		return parentPolygon;
 	}
 	
-	abstract protected boolean writeAnimations(long animationTime);
+	abstract protected boolean writeAnimations(long animatonStep, long animationTime);
 	
 	protected void addAnimation(AbstractAnim<?> animation) {
 		if(animations != null) {

@@ -140,6 +140,14 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 		return sVBlank;
 	}
 	
+	public long getAnimStepMilisec() {
+		return animStepMilisec;
+	}
+
+	public void setAnimStepMilisec(long animStepMilisec) {
+		this.animStepMilisec = animStepMilisec;
+	}
+
 	private <V extends AbstractPolygon> void registerSVRootModel(GLumpSVModel<V> sVRootModel) {
 		if(sVRootModel != null && sVRootModel.isRootModel()) {
 			renderer.clearPolygons();
@@ -165,11 +173,11 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 								GLumpSV.super.requestRender();
 								while(renderer.refreshPolygons()) {
 									while(isPaused()) {
-										Thread.sleep(ANIMATION_STEP_MILISEC);
+										Thread.sleep(getAnimStepMilisec());
 									}
 									
 									GLumpSV.super.requestRender();
-									Thread.sleep(ANIMATION_STEP_MILISEC);
+									Thread.sleep(getAnimStepMilisec());
 								}
 
 								if(rendererQueue.isLooped()) {
@@ -181,7 +189,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 							}
 						}
 						else {
-							Thread.sleep(ANIMATION_STEP_MILISEC);
+							Thread.sleep(getAnimStepMilisec());
 						}
 					}
 					while(!rendererQueue.isStopped());
@@ -190,15 +198,15 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 						GLumpSV.super.requestRender();
 						while(renderer.refreshPolygons()) {
 							while(isPaused()) {
-								Thread.sleep(ANIMATION_STEP_MILISEC);
+								Thread.sleep(getAnimStepMilisec());
 							}
 							GLumpSV.super.requestRender();
-							Thread.sleep(ANIMATION_STEP_MILISEC);
+							Thread.sleep(getAnimStepMilisec());
 						}
 					}
 					
 					while(isPaused()) {
-						Thread.sleep(ANIMATION_STEP_MILISEC);
+						Thread.sleep(getAnimStepMilisec());
 					}
 					
 					rendererQueue.onRendered();
@@ -231,6 +239,7 @@ public class GLumpSV<T extends GLumpSVBlank> extends GLSurfaceView {
 	private RenderConveyor additionalRenderConveyor;
 	private Thread additionalRenderThread;
 	private final int glSurfaceViewRenderMode;
+	private long animStepMilisec = NORMAL_ANIM_STEP_MILISEC;
 	
-	public static final long ANIMATION_STEP_MILISEC = 30L;
+	public final static long NORMAL_ANIM_STEP_MILISEC = 100L;
 }

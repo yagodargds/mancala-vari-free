@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ManqalaCompanyWellcomeActivity extends Activity {
+public class ManqalaCampaignWellcomeActivity extends Activity {
 	public void onClickHandler(View target) {
 		switch(target.getId()) {
 		case R.id.btn_cw_back:
@@ -31,7 +31,7 @@ public class ManqalaCompanyWellcomeActivity extends Activity {
 			}
 			else {
 				ManqalaCharactersDBManager.getInstance().addCharacter(newName, false, true);
-				startActivity(new Intent(this, ManqalaCompanyActivity.class));
+				startActivity(new Intent(this, ManqalaCampaignActivity.class));
 				finish();
 			}
 			break;
@@ -67,6 +67,6 @@ public class ManqalaCompanyWellcomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.company_welcome);
+		setContentView(R.layout.campaign_welcome);
 	}
 }

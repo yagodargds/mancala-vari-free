@@ -22,45 +22,118 @@
         android:layout_weight="0.133"
         android:text="@string/btn_mm_options_label" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_weight="0.2"
-        android:orientation="horizontal" >
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_weight="0.401" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.33" />
-        
-        <ToggleButton android:id="@+id/btn_o_toogle_music"
-            style="@style/ManqalaVariButtonTheme"
-	        android:onClick="onClickHandler"
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:gravity="center_vertical|center_horizontal"
-	        android:layout_weight="0.33"
-	        android:textOn="@string/btn_o_toogle_music_on_label"
-	        android:textOff="@string/btn_o_toogle_music_off_label" />
-	        
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="0.33" />
-        
-    </LinearLayout>
-    
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_weight="0.066" />
-    
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_weight="0.133" />
-    
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="right|center_vertical"
+                    android:text="@string/chbx_o_music_label" />
+
+                <CheckBox
+                    android:id="@+id/chbx_o_music"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.4"
+                    android:gravity="left|center_vertical"
+                    android:onClick="onClickHandler"
+                    android:text="@string/chbx_o_music_on_label" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+                
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent" />
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.4"
+                    android:gravity="right|center_vertical"
+                    android:text="@string/rg_o_anim_speed_label" />
+
+                <RadioGroup
+                    android:id="@+id/rg_o_anim_speed"
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.4"
+                    android:gravity="left|center_vertical" >
+
+                    <RadioButton
+                        android:id="@+id/rb_o_anim_speed_slow"
+                    	android:onClick="onClickHandler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_o_anim_speed_slow_label" />
+
+                    <RadioButton
+                        android:id="@+id/rb_o_anim_speed_medium"
+                    	android:onClick="onClickHandler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_o_anim_speed_medium_label" />
+
+                    <RadioButton
+                        android:id="@+id/rb_o_anim_speed_fast"
+                    	android:onClick="onClickHandler"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_o_anim_speed_fast_label" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.1" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="1dp"

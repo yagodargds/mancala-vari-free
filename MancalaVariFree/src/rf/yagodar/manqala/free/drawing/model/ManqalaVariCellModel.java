@@ -38,12 +38,12 @@ public class ManqalaVariCellModel extends GLumpSVModel<Rectangle> {
 		return grainsCount;
 	}
 	
-	public AnimScenInfo animIncGrainModel(Float[] animAddNodes, long animTime) {
+	public AnimScenInfo animIncGrainModel(Float[] animAddNodes, long animStep, long animTime) {
 		AnimScenInfo animScenInfo = null;
 
 		ArrayList<GLumpSVModel<?>> transpGrainModels = getGrainModels(true);
 		if(transpGrainModelIndx < transpGrainModels.size()) {
-			animScenInfo = new AnimScenInfo(transpGrainModels.get(transpGrainModelIndx), HomogenAnimScenBuilder.generateTransparentAnimScen(animAddNodes, animTime));
+			animScenInfo = new AnimScenInfo(transpGrainModels.get(transpGrainModelIndx), HomogenAnimScenBuilder.generateTransparentAnimScen(animAddNodes, animStep, animTime));
 			transpGrainModelIndx++;
 			grainsCount++;
 		}
@@ -51,28 +51,28 @@ public class ManqalaVariCellModel extends GLumpSVModel<Rectangle> {
 		return animScenInfo;
 	}
 	
-	public ArrayList<AnimScenInfo> animAddGrainModels(int addGrainsCount, Float[] animAddNodes, long animTime) {
+	public ArrayList<AnimScenInfo> animAddGrainModels(int addGrainsCount, Float[] animAddNodes, long animStep, long animTime) {
 		ArrayList<AnimScenInfo> animScenInfos = new ArrayList<AnimScenInfo>();
 		
 		for (int i = 0; i < addGrainsCount; i++) {
-			animScenInfos.add(animIncGrainModel(animAddNodes, animTime));
+			animScenInfos.add(animIncGrainModel(animAddNodes, animStep, animTime));
 		}
 
 		return animScenInfos;
 	}
 	
-	public ArrayList<AnimScenInfo> animDelGrainModels(Float[] animDelNodes, long animTime) {
+	public ArrayList<AnimScenInfo> animDelGrainModels(Float[] animDelNodes, long animStep, long animTime) {
 		ArrayList<AnimScenInfo> animScenInfos = new ArrayList<AnimScenInfo>();
 		
 		for (GLumpSVModel<?> nonTranspGrainModel : getGrainModels(false)) {
-			animScenInfos.add(new AnimScenInfo(nonTranspGrainModel, HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animTime)));
+			animScenInfos.add(new AnimScenInfo(nonTranspGrainModel, HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animStep, animTime)));
 		}
 		
 		if(transpGrainModelIndx > 0) {
 			ArrayList<GLumpSVModel<?>> transpGrainNode = getGrainModels(true);
 			
 			for (int i = transpGrainModelIndx - 1; i >= 0; i--) {
-				animScenInfos.add(new AnimScenInfo(transpGrainNode.get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animTime)));
+				animScenInfos.add(new AnimScenInfo(transpGrainNode.get(i), HomogenAnimScenBuilder.generateTransparentAnimScen(animDelNodes, animStep, animTime)));
 			}
 			
 			resetTranspGrainModelIndx();
