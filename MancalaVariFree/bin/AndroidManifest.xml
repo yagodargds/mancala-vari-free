@@ -41,11 +41,11 @@
             android:screenOrientation="landscape"           
             />
         <activity 
-            android:name="rf.yagodar.manqala.free.activity.ManqalaCampaingWellcomeActivity" 
+            android:name="rf.yagodar.manqala.free.activity.ManqalaCampaignWellcomeActivity" 
             android:screenOrientation="landscape"           
             />
         <activity 
-            android:name="rf.yagodar.manqala.free.activity.ManqalaCampaingActivity" 
+            android:name="rf.yagodar.manqala.free.activity.ManqalaCampaignActivity" 
             android:screenOrientation="landscape"           
             />
         <activity 
