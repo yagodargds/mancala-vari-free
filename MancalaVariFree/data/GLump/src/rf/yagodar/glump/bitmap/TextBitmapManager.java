@@ -35,77 +35,84 @@ public class TextBitmapManager {
 
 	public ArrayList<AbstractPolygon> drawText(Rectangle textModelPolygon, String text, int textColor) {
 		ArrayList<AbstractPolygon> polygonsToAdd = null;
-		
-		if(textModelPolygon != null && text != null && !text.equals("") && textPaint.getFontSpacing() < bitmapSideSize) {
-			float textModelWidth = textModelPolygon.getWidth();
 
-			float[] textWidths = new float[text.length()];
-			textPaint.getTextWidths(text, textWidths);
+		try {
+			if(textModelPolygon != null && text != null && !text.equals("") && textPaint.getFontSpacing() < bitmapSideSize) {
+				float textModelWidth = textModelPolygon.getWidth();
 
-			float translatedTextScaleMult = textModelPolygon.getHeight() / textPaint.getFontSpacing();
-			
-			float textWidth = 0.0f;
-			for(int i = 0; i < textWidths.length; i++) {
-				textWidths[i] *= translatedTextScaleMult;
-				textWidth += textWidths[i];
-			}
+				float[] textWidths = new float[text.length()];
+				textPaint.getTextWidths(text, textWidths);
 
-			if(textModelWidth < textWidth) {
-				if(text.length() <= dotCharsCount) {
-					return polygonsToAdd;
+				float translatedTextScaleMult = textModelPolygon.getHeight() / textPaint.getFontSpacing();
+
+				float textWidth = 0.0f;
+				for(int i = 0; i < textWidths.length; i++) {
+					textWidths[i] *= translatedTextScaleMult;
+					textWidth += textWidths[i];
 				}
-				else {
-					float dotCharWidth = translatedTextScaleMult * dotCharWidthPix;
-					float dotCharsWidth = dotCharsCount * dotCharWidth;
-					if(textModelWidth < textWidths[0] + dotCharsWidth) {
+
+				if(textModelWidth < textWidth) {
+					if(text.length() <= dotCharsCount) {
 						return polygonsToAdd;
 					}
 					else {
-						float checkDotCharWidth = dotCharsWidth + dotCharWidth;
-						textWidth = 0.0f;
-						int i;
-						for(i = 0; i < textWidths.length - dotCharsCount; i++) {
-							textWidth += textWidths[i];
-							if(textModelWidth < textWidth + checkDotCharWidth) {									
-								break;
+						float dotCharWidth = translatedTextScaleMult * dotCharWidthPix;
+						float dotCharsWidth = dotCharsCount * dotCharWidth;
+						if(textModelWidth < textWidths[0] + dotCharsWidth) {
+							return polygonsToAdd;
+						}
+						else {
+							float checkDotCharWidth = dotCharsWidth + dotCharWidth;
+							textWidth = 0.0f;
+							int i;
+							for(i = 0; i < textWidths.length - dotCharsCount; i++) {
+								textWidth += textWidths[i];
+								if(textModelWidth < textWidth + checkDotCharWidth) {									
+									break;
+								}
 							}
-						}
 
-						for(int j = i + 1; j <= i + dotCharsCount; j++) {
-							textWidths[j] = dotCharWidth;
-							textWidth += textWidths[j];
-						}
+							for(int j = i + 1; j <= i + dotCharsCount; j++) {
+								if(j < textWidths.length) {
+									textWidths[j] = dotCharWidth;
+									textWidth += textWidths[j];
+								}
+							}
 
-						text = text.substring(0, i + 1);
-						for(int j = 0; j < dotCharsCount; j++) {
-							text += dotChar;
+							text = text.substring(0, i + 1);
+							for(int j = 0; j < dotCharsCount; j++) {
+								text += dotChar;
+							}
 						}
 					}
 				}
-			}
 
-			polygonsToAdd = new ArrayList<AbstractPolygon>();
-			
-			float leftX = textModelPolygon.getLeftX() + (textModelWidth - textWidth) / 2.0f;
-			TextureInfo textureInfo;
-			for(int charIndx = 0; charIndx < text.length(); charIndx++) {
-				textureInfo = getTextureInfo(text.charAt(charIndx), textWidths[charIndx] / translatedTextScaleMult, textColor);
-				if(textureInfo != null) {
-					Rectangle charPolygon = new Rectangle(textModelPolygon.getLevelZ(), 
-							textureInfo.getTexId(), 
-							leftX, textModelPolygon.getTopY(), 
-							leftX + textWidths[charIndx], 
-							textModelPolygon.getBottomY(), 
-							textureInfo.getLeftS(), 
-							textureInfo.getTopT(), 
-							textureInfo.getRightS(), 
-							textureInfo.getBottomT());
-					
-					polygonsToAdd.add(charPolygon);
+				polygonsToAdd = new ArrayList<AbstractPolygon>();
+
+				float leftX = textModelPolygon.getLeftX() + (textModelWidth - textWidth) / 2.0f;
+				TextureInfo textureInfo;
+				for(int charIndx = 0; charIndx < text.length(); charIndx++) {
+					if(charIndx < textWidths.length) {
+						textureInfo = getTextureInfo(text.charAt(charIndx), textWidths[charIndx] / translatedTextScaleMult, textColor);
+						if(textureInfo != null) {
+							Rectangle charPolygon = new Rectangle(textModelPolygon.getLevelZ(), 
+									textureInfo.getTexId(), 
+									leftX, textModelPolygon.getTopY(), 
+									leftX + textWidths[charIndx], 
+									textModelPolygon.getBottomY(), 
+									textureInfo.getLeftS(), 
+									textureInfo.getTopT(), 
+									textureInfo.getRightS(), 
+									textureInfo.getBottomT());
+
+							polygonsToAdd.add(charPolygon);
+						}
+						leftX += textWidths[charIndx];
+					}
 				}
-				leftX += textWidths[charIndx];
 			}
 		}
+		catch(Exception e) {}
 		
 		return polygonsToAdd;
 	}
