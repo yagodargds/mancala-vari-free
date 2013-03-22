@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="rf.yagodar.manqala.free"
-    android:versionCode="2"
+    android:versionCode="3"
     android:versionName="@string/version_name" >
 
     <uses-sdk
